@@ -1,0 +1,52 @@
+ext {
+
+    isModule = false
+
+    versions = [
+        applicationId           :"com.orange.daily",
+        versionCode             : 1,                    //版本号
+        versionName             : "1.0.0",              //版本名称
+
+        kotlin_version          :"1.2.71",
+
+        compileSdkVersion       : 27,
+        buildToolsVersion       : "28.0.3",
+        minSdkVersion           : 21,
+        targetSdkVersion        : 27,
+
+        androidSupportSdkVersion: "27.1.1",
+        constraintLayoutVersion : "1.1.1",
+        multidexVersion         : "1.0.3",
+
+        arouterApiVersion       : "1.4.0",
+        arouterCompilerVersion  : "1.2.1",
+        arouterannotationVersion: "1.0.4",
+
+        glideVersion            :"4.8.0",
+        eventbusVersion         :"3.1.1",
+
+    ]
+
+    dependencies = [
+            "kotlin_jdk"          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions["kotlin_version"]}",
+            "kotlin_plugin"          : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions["kotlin_version"]}",
+
+            "appcompat_v7"        : "com.android.support:appcompat-v7:${versions["androidSupportSdkVersion"]}",
+            "constraint_layout"   : "com.android.support.constraint:constraint-layout:${versions["constraintLayoutVersion"]}",
+            "design"              : "com.android.support:design:${versions["androidSupportSdkVersion"]}",
+            "support-v4"          : "com.android.support:support-v4:${versions["androidSupportSdkVersion"]}",
+            "recyclerview-v7"     : "com.android.support:recyclerview-v7:${versions["androidSupportSdkVersion"]}",
+            "multidex"            : "com.android.support:multidex:${versions["multidexVersion"]}",
+
+            //路由
+            "arouter_api"         : "com.alibaba:arouter-api:${versions["arouterApiVersion"]}",
+            "arouter_compiler"    : "com.alibaba:arouter-compiler:${versions["arouterCompilerVersion"]}",
+            "arouter_annotation"  : "com.alibaba:arouter-annotation:${versions["arouterannotationVersion"]}",
+
+
+            "glide"               : "com.github.bumptech.glide:glide:${versions["glideVersion"]}",
+            "eventbus"            : "org.greenrobot:eventbus:${versions["eventbusVersion"]}",
+    ]
+
+
+}
