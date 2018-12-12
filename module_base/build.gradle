@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
@@ -47,4 +48,14 @@ dependencies {
     kapt rootProject.ext.dependencies["arouter_compiler"]
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["arouter_annotation"]
+
+    debugImplementation  rootProject.ext.dependencies["leakcanaryDebug"]
+    releaseImplementation  rootProject.ext.dependencies["leakcanaryRelease"]
+
+    api rootProject.ext.dependencies["eventbus"]
+    api rootProject.ext.dependencies["RecyclerViewAdapter"]
+
+    kapt rootProject.ext.dependencies["glideCompiler"]
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glideTransformations"]
 }

@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="dialog_loading" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimEnabled">false</item><!--表示页面时候变暗，我们设置false，不变暗-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">#fff</item>
+    </style>
 </resources>

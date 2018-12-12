@@ -1,29 +1,33 @@
 ext {
 
-    isModule = false
+    isModule = true
 
     versions = [
-        applicationId           :"com.orange.daily",
-        versionCode             : 1,                    //版本号
-        versionName             : "1.0.0",              //版本名称
+        applicationId              :"com.orange.daily",
+        versionCode                : 1,                    //版本号
+        versionName                : "1.0.0",              //版本名称
 
-        kotlin_version          :"1.2.71",
+        kotlin_version             :"1.2.71",
 
-        compileSdkVersion       : 27,
-        buildToolsVersion       : "28.0.3",
-        minSdkVersion           : 21,
-        targetSdkVersion        : 27,
+        compileSdkVersion          : 27,
+        buildToolsVersion          : "28.0.3",
+        minSdkVersion              : 21,
+        targetSdkVersion           : 27,
 
-        androidSupportSdkVersion: "27.1.1",
-        constraintLayoutVersion : "1.1.1",
-        multidexVersion         : "1.0.3",
+        androidSupportSdkVersion   : "27.1.1",
+        constraintLayoutVersion    : "1.1.1",
+        multidexVersion            : "1.0.3",
 
-        arouterApiVersion       : "1.4.0",
-        arouterCompilerVersion  : "1.2.1",
-        arouterannotationVersion: "1.0.4",
+        arouterApiVersion          : "1.4.0",
+        arouterCompilerVersion     : "1.2.1",
+        arouterannotationVersion   : "1.0.4",
 
-        glideVersion            :"4.8.0",
-        eventbusVersion         :"3.1.1",
+        leakcanaryVersion           : "1.6.2",
+
+        glideVersion                :"4.8.0",
+        glideTransformationsVersion :"4.0.1",
+        eventbusVersion             :"3.1.1",
+        adapterVersion              :"2.9.44",
 
     ]
 
@@ -43,9 +47,15 @@ ext {
             "arouter_compiler"    : "com.alibaba:arouter-compiler:${versions["arouterCompilerVersion"]}",
             "arouter_annotation"  : "com.alibaba:arouter-annotation:${versions["arouterannotationVersion"]}",
 
+            "leakcanaryDebug"    : "com.squareup.leakcanary:leakcanary-android:${versions["leakcanaryVersion"]}",
+            "leakcanaryRelease"  : "com.squareup.leakcanary:leakcanary-android-no-op:${versions["leakcanaryVersion"]}",
 
             "glide"               : "com.github.bumptech.glide:glide:${versions["glideVersion"]}",
+            "glideCompiler"       : "com.github.bumptech.glide:compiler:${versions["glideVersion"]}",
+            "glideTransformations": "jp.wasabeef:glide-transformations:${versions["glideTransformationsVersion"]}",
+
             "eventbus"            : "org.greenrobot:eventbus:${versions["eventbusVersion"]}",
+            "RecyclerViewAdapter" : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions["adapterVersion"]}",
     ]
 
 

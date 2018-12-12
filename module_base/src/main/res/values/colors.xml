@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <!--字体颜色-->
+    <color name="font_white">#ffffff</color>
+    <color name="font_red">#d61d52</color>
+    <color name="font_gray">#687280</color>
+    <color name="font_blue">#2a77d4</color>
+    <color name="font_green">#27ce75</color>
 </resources>
