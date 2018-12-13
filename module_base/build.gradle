@@ -58,4 +58,14 @@ dependencies {
     kapt rootProject.ext.dependencies["glideCompiler"]
     api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["glideTransformations"]
+
+    api rootProject.ext.dependencies["rxJava"]
+    api rootProject.ext.dependencies["rxAndroid"]
+
+    //retrofit
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["okhttpInterceptor"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofitGson"]
+    api rootProject.ext.dependencies["retrofitAdapter"]
 }

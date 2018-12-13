@@ -9,10 +9,9 @@
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/holder_network"
-        android:layout_marginLeft="@dimen/common_left_right_margin"
-        android:layout_marginRight="@dimen/common_left_right_margin"
+        android:layout_marginLeft="@dimen/base_margin_right_left"
+        android:layout_marginRight="@dimen/base_margin_right_left"
         android:gravity="center"
-        android:text="@string/base_netwrok_error"
+        android:text="base_netwrok_error"
         android:textColor="@color/font_gray"/>
 </LinearLayout>

@@ -32,6 +32,7 @@ abstract class BaseFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if (isRegistEventBus()){
             EventBus.getDefault().register(this)
         }
