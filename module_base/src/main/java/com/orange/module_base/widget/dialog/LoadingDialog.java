@@ -16,7 +16,7 @@ import com.orange.module_base.R;
  */
 public class LoadingDialog extends ProgressDialog {
     public LoadingDialog(Context context) {
-        super(context, R.style.dialog_loading);
+        super(context, R.style.module_base_dialog_loading);
     }
 
     @Override

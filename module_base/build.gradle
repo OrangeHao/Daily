@@ -30,6 +30,9 @@ android {
         }
     }
 
+    //统一资源前缀，规范资源引用
+    resourcePrefix "module_base_"
+
 }
 
 dependencies {
@@ -68,4 +71,8 @@ dependencies {
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["retrofitGson"]
     api rootProject.ext.dependencies["retrofitAdapter"]
+
+    //widget
+    api rootProject.ext.dependencies["FlycoTabLayout"]
+
 }

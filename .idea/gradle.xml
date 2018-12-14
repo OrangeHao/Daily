@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/module_base" />
             <option value="$PROJECT_DIR$/module_main" />
             <option value="$PROJECT_DIR$/module_news" />
+            <option value="$PROJECT_DIR$/module_pictures" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

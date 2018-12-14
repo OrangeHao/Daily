@@ -10,5 +10,8 @@ class ARouterPaths{
         const val GROU_NEWS="News"
         const val ACTIVITY_NEWS="/news/NewsActivity"
 
+        const val FRAGMENT_NewsMainFragment="/news/NewsMainFragment"
+        const val FRAGMENT_PicturesMainFragment="/news/PicturesMainFragment"
+
     }
 }

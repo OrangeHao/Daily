@@ -1,6 +1,6 @@
 ext {
 
-    isModule = true
+    isModule = false
 
     versions = [
         applicationId              :"com.orange.daily",
@@ -70,6 +70,8 @@ ext {
 
             "eventbus"            : "org.greenrobot:eventbus:${versions["eventbusVersion"]}",
             "RecyclerViewAdapter" : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions["adapterVersion"]}",
+
+            "FlycoTabLayout"      : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
     ]
 
 

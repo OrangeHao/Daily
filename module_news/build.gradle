@@ -1,60 +1,15 @@
-if (Boolean.valueOf(rootProject.ext.isModule)) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply from: "../module.build.gradle"
 
 android {
-    compileSdkVersion rootProject.ext.versions.compileSdkVersion
-    buildToolsVersion rootProject.ext.versions.buildToolsVersion
-
     defaultConfig {
-        minSdkVersion rootProject.ext.versions.minSdkVersion
-        targetSdkVersion rootProject.ext.versions.targetSdkVersion
-        versionCode rootProject.ext.versions.versionCode
-        versionName rootProject.ext.versions.versionName
-        //MultiDex分包方法
-        multiDexEnabled true
-
-        //Arouter路由配置
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
+        //如果是独立模块，则使用当前组件的包名
+        if (Boolean.valueOf(rootProject.ext.isModule)) {
+            applicationId "com.orange.module.news"
         }
     }
-
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    //java插件引入了一个概念叫做SourceSets，通过修改SourceSets中的属性，可以指定哪些源文件
-    //（ 或文件夹下的源文件 ） 要被编译 ， 哪些源文件要被排除 。
-    sourceSets {
-        main {
-            if (Boolean.valueOf(rootProject.ext.isModule)) {
-                manifest.srcFile 'src/main/module/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                java {
-                    //排除java/debug文件夹下的所有文件
-                    exclude '*module'
-                }
-            }
-        }
-    }
+    //统一资源前缀，规范资源引用
+    resourcePrefix "module_news_"
 }
-
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //Arouter路由
-    kapt rootProject.ext.dependencies["arouter_compiler"]
-    implementation project(':module_base')
 }

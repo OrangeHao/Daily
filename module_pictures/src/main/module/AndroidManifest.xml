@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.orange.module_news">
+    <!-- 在Module单独开发模式下使用该mainfest -->
+    <application
+        android:name=".common.PicturesApplication"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/module_base_AppTheme">
+
+    </application>
+
+</manifest>
