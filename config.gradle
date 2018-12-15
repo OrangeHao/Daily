@@ -18,8 +18,8 @@ ext {
         constraintLayoutVersion    : "1.1.1",
         multidexVersion            : "1.0.3",
 
-        arouterApiVersion          : "1.4.0",
-        arouterCompilerVersion     : "1.2.1",
+        arouterApiVersion          : "1.4.1",
+        arouterCompilerVersion     : "1.2.2",
         arouterannotationVersion   : "1.0.4",
 
         leakcanaryVersion           : "1.6.2",

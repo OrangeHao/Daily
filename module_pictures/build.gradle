@@ -11,5 +11,4 @@ android {
     resourcePrefix "module_pictures_"
 }
 dependencies {
-
 }

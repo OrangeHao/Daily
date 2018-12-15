@@ -14,13 +14,6 @@ android {
         versionName rootProject.ext.versions.versionName
         //MultiDex分包方法
         multiDexEnabled true
-
-        //Arouter路由配置
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
     }
 
     buildTypes {
@@ -33,6 +26,13 @@ android {
     //统一资源前缀，规范资源引用
     resourcePrefix "module_base_"
 
+}
+
+//Arouter路由配置
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
 }
 
 dependencies {

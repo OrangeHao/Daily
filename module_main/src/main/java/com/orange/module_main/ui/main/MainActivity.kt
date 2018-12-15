@@ -1,6 +1,5 @@
 package com.orange.module_main.ui.main
 
-import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -12,6 +11,7 @@ import com.orange.module_base.base.BaseActivity
 import com.orange.module_base.base.BaseFragment
 import com.orange.module_base.constants.ARouterPaths
 import com.orange.module_base.utils.ARouterUtils
+import com.orange.module_base.utils.ActivityJumper
 import com.orange.module_main.R
 import kotlinx.android.synthetic.main.module_main_activity_main.*
 import kotlinx.android.synthetic.main.module_main_content_main.*
@@ -71,9 +71,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
             R.id.navigation_pictures -> {
                 switchFragment(ARouterPaths.FRAGMENT_PicturesMainFragment)
+//                ActivityJumper.jumpActivity(ARouterPaths.ACTIVITY_NEWS)
             }
             R.id.navigation_notifications -> {
-
+                ActivityJumper.jumpActivity(ARouterPaths.ACTIVITY_PicturesMainActivity)
             }
         }
 

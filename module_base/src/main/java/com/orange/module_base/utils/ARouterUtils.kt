@@ -4,10 +4,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.orange.module_base.base.BaseActivity
 import com.orange.module_base.base.BaseFragment
 
-/**
- * Describe：ARouter帮助类
- * Created by 吴天强 on 2018/11/13.
- */
 
 object ARouterUtils {
 
@@ -19,9 +15,13 @@ object ARouterUtils {
      * @return fragment
      */
     fun getFragment(path: String): BaseFragment? {
-        return ARouter.getInstance()
+        var target=ARouter.getInstance()
                 .build(path)
-                .navigation() as BaseFragment
+                .navigation()
+        if (target==null){
+            return null
+        }
+        return target as BaseFragment
     }
 
     /**
@@ -31,8 +31,12 @@ object ARouterUtils {
      * @return Activity
      */
     fun getActivity(path: String): BaseActivity? {
-        return ARouter.getInstance()
+        var target=ARouter.getInstance()
                 .build(path)
-                .navigation() as BaseActivity
+                .navigation()
+        if (target==null){
+            return null
+        }
+        return target as BaseActivity
     }
 }

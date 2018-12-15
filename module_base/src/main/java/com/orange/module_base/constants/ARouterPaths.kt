@@ -7,11 +7,16 @@ class ARouterPaths{
 
     companion object {
 
-        const val GROU_NEWS="News"
-        const val ACTIVITY_NEWS="/news/NewsActivity"
 
+        //*************************************news模块*****************************************/
+
+        const val ACTIVITY_NEWS="/news/NewsActivity"
         const val FRAGMENT_NewsMainFragment="/news/NewsMainFragment"
-        const val FRAGMENT_PicturesMainFragment="/news/PicturesMainFragment"
+
+
+        //*************************************pictures模块*****************************************/
+        const val ACTIVITY_PicturesMainActivity="/pictures/PicturesMainActivity"
+        const val FRAGMENT_PicturesMainFragment="/pictures/PicturesMainFragment"
 
     }
 }

@@ -1,2 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.orange.module_pictures" />
+    package="com.orange.module_pictures">
+
+    <application>
+        <activity android:name=".ui.main.PicturesMainActivity"></activity>
+    </application>
+
+</manifest>
