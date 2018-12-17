@@ -89,6 +89,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         var fragment = supportFragmentManager.findFragmentByTag(tag)
         if (fragment != null) {
             transaction.show(fragment)
+            transaction.commitAllowingStateLoss()
         } else {
             if (TextUtils.equals(tag, ARouterPaths.FRAGMENT_NewsMainFragment)) {
                 if (mNewsFragment==null){
@@ -106,10 +107,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 }
                 fragment = mNewsFragment
             }
-            mFragmentList.add(fragment)
-            transaction.add(R.id.container, fragment, tag)
+            if (fragment!=null){
+                mFragmentList.add(fragment)
+                transaction.add(R.id.container, fragment, tag)
+                transaction.commitAllowingStateLoss()
+            }
         }
-        transaction.commitAllowingStateLoss()
     }
 
 
@@ -119,9 +122,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private fun hideFragment() {
         val transaction = supportFragmentManager.beginTransaction()
         for (f in mFragmentList) {
-            transaction.hide(f)
+            if (f!=null){
+                transaction.hide(f)
+            }
         }
         transaction.commit()
-
     }
 }

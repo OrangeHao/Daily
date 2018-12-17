@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">moduel_news</string>
+    <string name="module_news_app_name">module_news</string>
+
+
+    <string-array name="module_news_sections">
+        <item>@string/module_news_home_title_jiandan</item>
+        <item>@string/module_news_home_title_cnbeta</item>
+    </string-array>
+
+    <string name="module_news_home_title_jiandan">煎蛋</string>
+    <string name="module_news_home_title_cnbeta">cnBeta</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

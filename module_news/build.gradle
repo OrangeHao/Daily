@@ -9,7 +9,12 @@ android {
     }
     //统一资源前缀，规范资源引用
     resourcePrefix "module_news_"
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 dependencies {
 
+    implementation 'com.android.support:support-v4:27.1.1'
 }

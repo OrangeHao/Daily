@@ -4,7 +4,7 @@
     <application>
 
 
-        <activity android:name=".ui.main.NewsActivity"></activity>
+        <activity android:name=".ui.main.NewsMainActivity"></activity>
     </application>
 
 
