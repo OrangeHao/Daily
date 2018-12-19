@@ -3,8 +3,8 @@
 
 
     <string-array name="module_news_sections">
-        <item>@string/module_news_home_title_jiandan</item>
         <item>@string/module_news_home_title_cnbeta</item>
+        <item>@string/module_news_home_title_jiandan</item>
     </string-array>
 
     <string name="module_news_home_title_jiandan">煎蛋</string>

@@ -23,7 +23,7 @@ class NewsRefrofitHelper: BaseRetrofitHelper() {
     }
 
     override fun getBaseUrl(): String {
-        return ""
+        return "http://i.jandan.net"
     }
 
 }
