@@ -261,7 +261,7 @@ public class ImageLoaderWrapper {
      * @return
      */
     public static String getCacheFileSize(Context context){
-        return FileSizeUtil.getAutoFileOrFilesSize(Glide.getPhotoCacheDir(context,"PictureCache"));
+        return FileSizeUtil.INSTANCE.getAutoFileOrFilesSize(Glide.getPhotoCacheDir(context,"PictureCache"));
     }
 
     public static int dpToPx(int dp) {

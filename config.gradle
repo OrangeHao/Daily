@@ -24,6 +24,8 @@ ext {
 
         leakcanaryVersion           : "1.6.2",
 
+        loggerVersion               : "2.2.0",
+
         rxJavaVersion               : "2.2.4",
         rxAndroidVersion            : "2.1.0",
 
@@ -54,6 +56,8 @@ ext {
 
             "leakcanaryDebug"    : "com.squareup.leakcanary:leakcanary-android:${versions["leakcanaryVersion"]}",
             "leakcanaryRelease"  : "com.squareup.leakcanary:leakcanary-android-no-op:${versions["leakcanaryVersion"]}",
+
+            "logger"               : "com.orhanobut:logger:${versions["loggerVersion"]}",
 
             "okhttp"               : "com.squareup.okhttp3:okhttp:${versions["okhttpVersion"]}",
             "okhttpInterceptor"    : "com.squareup.okhttp3:logging-interceptor:${versions["okhttpVersion"]}",

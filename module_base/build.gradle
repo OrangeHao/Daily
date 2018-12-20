@@ -65,6 +65,8 @@ dependencies {
     api rootProject.ext.dependencies["rxJava"]
     api rootProject.ext.dependencies["rxAndroid"]
 
+    api rootProject.ext.dependencies["logger"]
+
     //retrofit
     api rootProject.ext.dependencies["okhttp"]
     api rootProject.ext.dependencies["okhttpInterceptor"]

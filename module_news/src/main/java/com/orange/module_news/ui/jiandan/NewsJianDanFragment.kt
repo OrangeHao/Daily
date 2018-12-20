@@ -10,6 +10,7 @@ import com.orange.module_base.base.BaseLazyFragment
 import com.orange.module_news.R
 import com.orange.module_news.R.id.recyclerview
 import com.orange.module_news.model.NewsListItemBean
+import com.orange.module_news.model.Post
 import com.orange.module_news.network.NewsApiRepository
 import io.reactivex.Scheduler
 import io.reactivex.SingleObserver
@@ -29,7 +30,7 @@ class NewsJianDanFragment : BaseLazyFragment() {
 
 
     var mAdapter: NewsJianDanListAdapter? = null
-    val mDataList= ArrayList<NewsListItemBean.PostsBean>()
+    val mDataList= ArrayList<Post>()
 
     var mPageIndex=1
 
@@ -80,8 +81,8 @@ class NewsJianDanFragment : BaseLazyFragment() {
         NewsApiRepository.getInstance()!!.getNews(mPageIndex)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object :SingleObserver<List<NewsListItemBean.PostsBean>>{
-                    override fun onSuccess(t: List<NewsListItemBean.PostsBean>) {
+                .subscribe(object :SingleObserver<List<Post>>{
+                    override fun onSuccess(t: List<Post>) {
                         swipeLayout.isRefreshing=false
                         if (mPageIndex==1){
                             mAdapter!!.setNewData(t)

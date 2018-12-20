@@ -6,6 +6,7 @@ import android.view.View
 import com.orange.module_base.base.BaseActivity
 import com.orange.module_news.R
 import com.orange.module_news.model.NewsDetail
+import com.orange.module_news.model.NewsDetailPost
 import com.orange.module_news.network.NewsApiRepository
 import com.zzhoujay.richtext.RichText
 import io.reactivex.SingleObserver
@@ -40,8 +41,8 @@ class JianDanNewsDetailActivity : BaseActivity() {
         NewsApiRepository.getInstance()!!.getNewsDetail(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : SingleObserver<NewsDetail.PostBean> {
-                    override fun onSuccess(t: NewsDetail.PostBean) {
+                .subscribe(object : SingleObserver<NewsDetailPost> {
+                    override fun onSuccess(t: NewsDetailPost) {
                         RichText.from(t.content)
                                 .done {
                                     loading_progress.visibility= View.GONE

@@ -5,6 +5,10 @@ import android.content.Context
 import android.support.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.orange.module_base.BuildConfig
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
+
+
 
 /**
  * created by czh on 2018/12/10
@@ -26,6 +30,20 @@ open class BaseApplication: Application() {
         super.onCreate()
 
         initARouter()
+
+        Logger.addLogAdapter(object : AndroidLogAdapter() {
+            override fun log(priority: Int, tag: String?, message: String) {
+                if (tag==null){
+                    super.log(priority, "Daily", message)
+                }else{
+                    super.log(priority, tag, message)
+                }
+            }
+
+            override fun isLoggable(priority: Int, tag: String?): Boolean {
+                return super.isLoggable(priority, tag)
+            }
+        })
     }
 
 

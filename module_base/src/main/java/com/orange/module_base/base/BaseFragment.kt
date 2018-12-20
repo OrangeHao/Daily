@@ -79,7 +79,7 @@ abstract class BaseFragment : Fragment(){
 
     open fun showProgress() {
         if (progressDlg==null){
-            progressDlg = LoadingDialog(context)
+            progressDlg = LoadingDialog(context!!)
         }
         progressDlg!!.show()
     }

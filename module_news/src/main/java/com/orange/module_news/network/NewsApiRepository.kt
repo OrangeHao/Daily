@@ -2,7 +2,9 @@ package com.orange.module_news.network
 
 
 import com.orange.module_news.model.NewsDetail
+import com.orange.module_news.model.NewsDetailPost
 import com.orange.module_news.model.NewsListItemBean
+import com.orange.module_news.model.Post
 
 import io.reactivex.Single
 import retrofit2.Retrofit
@@ -37,7 +39,7 @@ class NewsApiRepository private constructor() {
     }
 
 
-    fun getNews(pageIndex: Int): Single<List<NewsListItemBean.PostsBean>> {
+    fun getNews(pageIndex: Int): Single<List<Post>> {
         return mJianDanApi.getNews(
                 "get_recent_posts",
                 "url,date,tags,author,title,excerpt,comment_count,comment_status,custom_fields",
@@ -47,7 +49,7 @@ class NewsApiRepository private constructor() {
                 .map { bean -> bean.posts }
     }
 
-    fun getNewsDetail(id: Int): Single<NewsDetail.PostBean> {
+    fun getNewsDetail(id: Int): Single<NewsDetailPost> {
         return mJianDanApi.getNewsDetail(
                 "get_post",
                 "" + id,
