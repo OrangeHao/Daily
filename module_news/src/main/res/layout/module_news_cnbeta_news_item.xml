@@ -5,13 +5,13 @@
     android:foreground="?android:selectableItemBackground"
     android:padding="@dimen/common_margin"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <ImageView
         android:id="@+id/news_img"
-        android:layout_width="110dp"
-        android:layout_height="95dp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
         />
-    
+
     <TextView
         android:id="@+id/news_title"
         android:layout_width="match_parent"
@@ -22,21 +22,6 @@
         android:ellipsize="end"
         android:textColor="@color/textDefualt"
         android:textSize="@dimen/text_size_middle"
-        tools:text="jsdjkfjajskdlfjlasjkf"
-        />
-
-    <TextView
-        android:id="@+id/news_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/news_img"
-        android:layout_marginLeft="@dimen/common_margin"
-        android:layout_marginTop="2dp"
-        android:layout_below="@id/news_title"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textColor="@color/textDefualt2"
-        android:textSize="12sp"
         tools:text="jsdjkfjajskdlfjlasjkf"
         />
 

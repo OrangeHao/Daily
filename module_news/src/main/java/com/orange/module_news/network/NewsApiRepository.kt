@@ -1,10 +1,11 @@
 package com.orange.module_news.network
 
 
-import com.orange.module_news.model.NewsDetail
+import com.orange.module_news.model.CnBetaNewsItem
+import com.orange.module_news.model.CnBetaNewsListBean
 import com.orange.module_news.model.NewsDetailPost
-import com.orange.module_news.model.NewsListItemBean
 import com.orange.module_news.model.Post
+import com.orange.module_news.utils.MD5
 
 import io.reactivex.Single
 import retrofit2.Retrofit
@@ -16,9 +17,12 @@ class NewsApiRepository private constructor() {
     private val mRetrofit: Retrofit
     private val mJianDanApi: JianDanApi
 
+    private val mCnBetaApi:CnBetaApi
+
     init {
         mRetrofit = NewsRefrofitHelper().retrofit
         mJianDanApi = mRetrofit.create(JianDanApi::class.java)
+        mCnBetaApi = mRetrofit.create(CnBetaApi::class.java)
     }
 
     companion object {
@@ -55,6 +59,27 @@ class NewsApiRepository private constructor() {
                 "" + id,
                 "content,date,modified")
                 .map { newsBean -> newsBean.post }
+    }
+
+    fun getCnBetaNews(endSid:Int):Single<List<CnBetaNewsItem>>{
+        val sb = StringBuilder()
+        sb.append("app_key=10000")
+        sb.append("&end_sid=").append(endSid)
+        sb.append("&format=json")
+        sb.append("&method=Article.Lists")
+        val time=System.currentTimeMillis()
+        sb.append("&timestamp=").append(time)
+        sb.append("&v=2.8.5")
+        val signed = MD5.md5(sb.toString() + "&mpuffgvbvbttn3Rc")
+        return mCnBetaApi.getNewsByEndId(
+                "10000",
+                 endSid.toString(),
+                "json",
+                "Article.Lists",
+                time.toString(),
+                "2.8.5",
+                signed
+        ).map { bean->bean.result}
     }
 
 }
