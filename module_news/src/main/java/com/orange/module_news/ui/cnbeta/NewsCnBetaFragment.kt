@@ -59,6 +59,7 @@ class NewsCnBetaFragment : BaseLazyFragment() {
         },recyclerview)
 
         mAdapter!!.setOnItemClickListener { adapter, view, position ->
+            CnbetaNewsDetailActivity.start(context!!,mAdapter!!.data.get(position).sid)
         }
 
         swipeLayout.setColorSchemeResources(R.color.colorPrimary)

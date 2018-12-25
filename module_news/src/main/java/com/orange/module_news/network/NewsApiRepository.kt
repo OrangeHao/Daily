@@ -2,7 +2,7 @@ package com.orange.module_news.network
 
 
 import com.orange.module_news.model.CnBetaNewsItem
-import com.orange.module_news.model.CnBetaNewsListBean
+import com.orange.module_news.model.CnbetaNewsDetail
 import com.orange.module_news.model.NewsDetailPost
 import com.orange.module_news.model.Post
 import com.orange.module_news.utils.MD5
@@ -80,6 +80,27 @@ class NewsApiRepository private constructor() {
                 "2.8.5",
                 signed
         ).map { bean->bean.result}
+    }
+
+    fun getCnBetaNewsContent(sid:String):Single<CnbetaNewsDetail>{
+        val sb = StringBuilder()
+        sb.append("app_key=10000")
+        sb.append("&format=json")
+        sb.append("&method=Article.NewsContent")
+        sb.append("&sid=").append(sid)
+        val time=System.currentTimeMillis()
+        sb.append("&timestamp=").append(time)
+        sb.append("&v=2.8.5")
+        val signed = MD5.md5(sb.toString() + "&mpuffgvbvbttn3Rc")
+        return mCnBetaApi.getNewsContentBySid(
+                "10000",
+                "json",
+                "Article.NewsContent",
+                sid.toString(),
+                time.toString(),
+                "2.8.5",
+                signed
+        )
     }
 
 }

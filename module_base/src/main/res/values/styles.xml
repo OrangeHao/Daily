@@ -14,4 +14,12 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="colorAccent">#fff</item>
     </style>
+
+
+    <style name="module_base_SwipeBackLayout">
+        <item name="edge_size">50dip</item>
+        <item name="shadow_left">@drawable/shadow_left</item>
+        <item name="shadow_right">@drawable/shadow_right</item>
+        <item name="shadow_bottom">@drawable/shadow_bottom</item>
+    </style>
 </resources>

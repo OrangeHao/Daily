@@ -1,6 +1,7 @@
 package com.orange.module_news.network
 
 import com.orange.module_news.model.CnBetaNewsListBean
+import com.orange.module_news.model.CnbetaNewsDetail
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -22,5 +23,17 @@ interface CnBetaApi {
             @Query("v") v:String,
             @Query("sign") sign:String
     ): Single<CnBetaNewsListBean>
+
+
+    @GET("http://api.cnbeta.com/capi")
+    abstract fun getNewsContentBySid(
+            @Query("app_key") app_key:String,
+            @Query("format") format:String,
+            @Query("method") method:String,
+            @Query("sid") end_sid:String,
+            @Query("timestamp") timestamp:String,
+            @Query("v") v:String,
+            @Query("sign") sign:String
+    ): Single<CnbetaNewsDetail>
 
 }

@@ -3,6 +3,8 @@ package com.orange.module_news.ui.jiandan
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import com.mit.thaiboxing.util.statusbar.setStatusBarLightMode
+import com.mit.thaiboxing.util.statusbar.setTransParentStatusBar
 import com.orange.module_base.base.BaseActivity
 import com.orange.module_news.R
 import com.orange.module_news.model.NewsDetail
@@ -15,6 +17,12 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.module_news_activity_jian_dan_news_detail.*
 
+/**
+ * @author OrangeHao
+ * @date 2018/12/25
+ * @Github https://github.com/OrangeHao
+ * @describe
+ */
 class JianDanNewsDetailActivity : BaseActivity() {
     override fun getContentLayoutId(): Int =R.layout.module_news_activity_jian_dan_news_detail
 
@@ -31,6 +39,9 @@ class JianDanNewsDetailActivity : BaseActivity() {
 
     override fun initView() {
         super.initView()
+        setTransParentStatusBar()
+        setStatusBarLightMode()
+
         RichText.initCacheDir(this)
 
         getNewsDetail(intent.getIntExtra("id",1))

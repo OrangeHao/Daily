@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.jiandan.JianDanNewsDetailActivity"></activity>
+        <activity android:name=".ui.jiandan.JianDanNewsDetailActivity" />
+        <activity android:name=".ui.cnbeta.CnbetaNewsDetailActivity"></activity>
     </application>
 
 </manifest>
