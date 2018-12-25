@@ -6,6 +6,7 @@ import android.view.View
 import com.mit.thaiboxing.util.statusbar.setStatusBarLightMode
 import com.mit.thaiboxing.util.statusbar.setTransParentStatusBar
 import com.orange.module_base.base.BaseActivity
+import com.orange.module_base.base.BaseSwipBackActivity
 import com.orange.module_news.R
 import com.orange.module_news.model.NewsDetail
 import com.orange.module_news.model.NewsDetailPost
@@ -23,7 +24,7 @@ import kotlinx.android.synthetic.main.module_news_activity_jian_dan_news_detail.
  * @Github https://github.com/OrangeHao
  * @describe
  */
-class JianDanNewsDetailActivity : BaseActivity() {
+class JianDanNewsDetailActivity : BaseSwipBackActivity() {
     override fun getContentLayoutId(): Int =R.layout.module_news_activity_jian_dan_news_detail
 
 
