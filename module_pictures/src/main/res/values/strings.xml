@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">module_pictures</string>
 
+
+    <string-array name="module_pictures_sections">
+        <item>@string/module_pictures_home_title_boring</item>
+        <item>@string/module_pictures_home_title_boring_hot</item>
+        <item>@string/module_pictures_home_title_handy</item>
+        <item>@string/module_pictures_home_title_handyhot</item>
+    </string-array>
+
+    <string name="module_pictures_home_title_boring">无聊图</string>
+    <string name="module_pictures_home_title_boring_hot">无聊图_HOT</string>
+    <string name="module_pictures_home_title_handy">随手拍</string>
+    <string name="module_pictures_home_title_handyhot">随手拍_HOT</string>
 </resources>

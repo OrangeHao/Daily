@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.orange.module_base.R
 import com.orange.module_base.widget.dialog.LoadingDialog
+import com.orange.module_base.widget.swipbacklayout.SwipeBackLayout
 import com.orange.module_base.widget.swipbacklayout.app.SwipeBackActivity
 import kotlinx.android.synthetic.main.base_titlebar_layout.*
 import org.greenrobot.eventbus.EventBus
@@ -47,7 +48,6 @@ abstract class BaseSwipBackActivity: SwipeBackActivity(){
 
     /*** 初始化布局 */
     open fun initView() {
-
     }
 
     /*** 点击事件 */

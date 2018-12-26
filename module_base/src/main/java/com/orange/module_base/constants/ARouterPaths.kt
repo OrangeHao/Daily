@@ -15,7 +15,6 @@ class ARouterPaths{
 
 
         //*************************************pictures模块*****************************************/
-        const val ACTIVITY_PicturesMainActivity="/pictures/PicturesMainActivity"
         const val FRAGMENT_PicturesMainFragment="/pictures/PicturesMainFragment"
 
     }

@@ -11,8 +11,14 @@ import com.orange.module_pictures.R
  * @Github https://github.com/OrangeHao
  * @describe
  */
-@Route(path = ARouterPaths.ACTIVITY_PicturesMainActivity)
 class PicturesMainActivity : BaseActivity() {
-    override fun getContentLayoutId(): Int =R.layout.module_pictures_activity_pictures_main
+    override fun getContentLayoutId(): Int = R.layout.module_pictures_activity_pictures_main
 
+
+    override fun initView() {
+        super.initView()
+        val transition=supportFragmentManager.beginTransaction()
+        transition.add(R.id.root_layout,PicturesMainFragment())
+        transition.commit()
+    }
 }

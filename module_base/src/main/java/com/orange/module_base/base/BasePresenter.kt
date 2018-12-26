@@ -23,8 +23,8 @@ abstract class BasePresenter<V:BaseView>(var mContext: Context) {
         mCompositeDisposable = CompositeDisposable()
     }
 
-    fun attachView(view: V) {
-        mViewRef = WeakReference(view)
+    fun attachView(view: BaseView) {
+        mViewRef = WeakReference(view as V)
     }
 
     fun isViewAttached():Boolean=(mViewRef != null && mViewRef!!.get() != null)
@@ -34,6 +34,10 @@ abstract class BasePresenter<V:BaseView>(var mContext: Context) {
             mViewRef!!.clear()
             mViewRef = null
         }
+    }
+
+    fun getView(): V? {
+        return if (mViewRef != null) mViewRef!!.get() else null
     }
 
     abstract fun subscribe()

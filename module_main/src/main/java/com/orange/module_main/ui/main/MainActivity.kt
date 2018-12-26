@@ -74,7 +74,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 //                ActivityJumper.jumpActivity(ARouterPaths.ACTIVITY_NEWS)
             }
             R.id.navigation_notifications -> {
-                ActivityJumper.jumpActivity(ARouterPaths.ACTIVITY_PicturesMainActivity)
+//                ActivityJumper.jumpActivity(ARouterPaths.ACTIVITY_PicturesMainActivity)
             }
         }
 

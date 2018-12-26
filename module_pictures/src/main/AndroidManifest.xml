@@ -3,7 +3,7 @@
     package="com.orange.module_pictures">
 
     <application>
-        <activity android:name=".ui.main.PicturesMainActivity"></activity>
+
     </application>
 
 </manifest>

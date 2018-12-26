@@ -1,4 +1,4 @@
-package com.orange.module_news.common
+package com.orange.module_pictures.common
 
 import com.orange.module_base.app.BaseApplication
 

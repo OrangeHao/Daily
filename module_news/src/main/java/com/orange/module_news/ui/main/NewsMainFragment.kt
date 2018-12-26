@@ -25,7 +25,7 @@ class NewsMainFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        var mAdapter = NewsHomePagerAdapter(childFragmentManager,activity)
+        var mAdapter = NewsHomePagerAdapter(childFragmentManager,context!!)
         view_pager.setOffscreenPageLimit(5)
         view_pager.setAdapter(mAdapter)
         sliding_tabs.setViewPager(view_pager)

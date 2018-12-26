@@ -4,14 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_layout"
     tools:context=".ui.main.PicturesMainActivity">
 
 
-    <TextView
-        android:id="@+id/module_pictures_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="picturesmain activity"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="235dp" />
+
 </android.support.constraint.ConstraintLayout>
