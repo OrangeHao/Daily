@@ -1,4 +1,4 @@
-package com.orange.module_pictures.ui.jiandan
+package com.orange.module_pictures.ui.jiandan.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

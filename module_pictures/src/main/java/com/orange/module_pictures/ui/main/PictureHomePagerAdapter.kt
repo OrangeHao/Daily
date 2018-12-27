@@ -9,7 +9,6 @@ import com.orange.module_pictures.R
 import com.orange.module_pictures.ui.jiandan.BoringFragment
 import com.orange.module_pictures.ui.jiandan.BoringHotFragment
 import com.orange.module_pictures.ui.jiandan.HandyFragment
-import com.orange.module_pictures.ui.jiandan.HandyHotFragment
 
 
 /**
@@ -34,8 +33,8 @@ class PictureHomePagerAdapter(fm: FragmentManager, context: Context) : FragmentP
             when (position) {
                 0 -> fragments[position] = BoringFragment.newInstance()
                 1 -> fragments[position] = BoringHotFragment.newInstance()
-                2 -> fragments[position] = HandyFragment.newInstance()
-                3 -> fragments[position] = HandyHotFragment.newInstance()
+                2 -> fragments[position] = HandyFragment.newInstance(false)
+                3 -> fragments[position] = HandyFragment.newInstance(true)
             }
         }
         return fragments[position]

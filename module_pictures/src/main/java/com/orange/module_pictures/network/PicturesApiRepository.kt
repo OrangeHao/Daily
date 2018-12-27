@@ -1,6 +1,8 @@
 package com.orange.module_pictures.network
 
 
+import com.orange.module_pictures.model.BoringHotPicsBean
+import com.orange.module_pictures.model.BoringPicsBean
 import com.orange.module_pictures.model.JianDanPicturesBean
 import com.orange.module_pictures.model.PicsBean
 import io.reactivex.Single
@@ -50,4 +52,16 @@ class PicturesApiRepository private constructor() {
     }
 
 
+    fun getBoringPics(pageIndex: Int): Single<List<BoringPicsBean>> {
+        return mJianDanApi.getBoringPics(
+                "jandan.get_pic_comments",
+                "" + pageIndex)
+                .map { bean -> bean.comments }
+    }
+
+
+    fun getBoringHotPics(): Single<List<BoringHotPicsBean>> {
+        return mJianDanApi.getBoringHotPics(
+                "picture").map { bean -> bean.comments }
+    }
 }

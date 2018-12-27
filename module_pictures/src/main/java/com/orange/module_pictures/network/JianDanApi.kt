@@ -1,6 +1,8 @@
 package com.orange.module_pictures.network
 
 
+import com.orange.module_pictures.model.BoringHotPicList
+import com.orange.module_pictures.model.BoringPicList
 import com.orange.module_pictures.model.PicsBean
 
 import io.reactivex.Single
@@ -25,4 +27,14 @@ interface JianDanApi {
     fun getHandyHotPics(
             @Query("category") way: String): Single<PicsBean>
 
+    //http://i.jandan.net/?oxwlxojflwblxbsapi=jandan.get_pic_comments&page=1
+    @GET("http://i.jandan.net/")
+    fun getBoringPics(
+            @Query("oxwlxojflwblxbsapi") way: String,
+            @Query("page") page: String): Single<BoringPicList>
+
+    //http://api.moyu.today/jandan/hot?category=picture
+    @GET("http://api.moyu.today/jandan/hot")
+    fun getBoringHotPics(
+            @Query("category") way: String): Single<BoringHotPicList>
 }
