@@ -1,6 +1,7 @@
 package com.orange.module_pictures.ui.jiandan.adapter
 
 import android.content.Context
+import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -11,6 +12,7 @@ import com.orange.module_base.utils.glide.ImageLoaderWrapper
 import com.orange.module_pictures.R
 import com.orange.module_pictures.model.BoringPicsBean
 import com.orange.module_pictures.model.JianDanPicturesBean
+import com.orhanobut.logger.Logger
 
 /**
  * created by czh on 2018/12/27
@@ -20,8 +22,14 @@ class BoringPicsAdapter(data: ArrayList<BoringPicsBean>?) : BaseQuickAdapter<Bor
 
     override fun convert(helper: BaseViewHolder, item: BoringPicsBean) {
         if (item.pics != null) {
-            ImageLoaderWrapper.loadImgDefault(helper.itemView.context,
-                    item.pics.get(0), helper.getView(R.id.pic_img))
+            if (item.pics.get(0).contains(".gif")){
+                Logger.t("czh").d("gif")
+                ImageLoaderWrapper.loadImgWithAsBitmap(helper.itemView.context,
+                        item.pics.get(0), helper.getView(R.id.pic_img))
+            }else{
+                ImageLoaderWrapper.loadImgDefault(helper.itemView.context,
+                        item.pics.get(0), helper.getView(R.id.pic_img))
+            }
         }
 
 
@@ -30,14 +38,15 @@ class BoringPicsAdapter(data: ArrayList<BoringPicsBean>?) : BaseQuickAdapter<Bor
 
 
     private fun loadImg(context: Context,url:String,imageView: ImageView){
-//        GlideApp
-//                .with(context)
-//                .load(url)
-//                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-//                .thumbnail(GlideApp
-//                        .with(context)
-//                        .asBitmap()
-//                .into(imageView))
+        GlideApp
+                .with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .thumbnail(GlideApp
+                        .with(context)
+                        .load(url)
+                )
+                .into(imageView)
     }
 
 

@@ -17,6 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
+import com.orange.module_base.R;
 import com.orange.module_base.utils.FileSizeUtil;
 
 import java.io.File;
@@ -30,6 +31,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class ImageLoaderWrapper {
 
 
+    private static int Default_holder=R.color.colorPrimaryLight;
 
     /******************************* 一般方法 ***********************************/
 
@@ -104,12 +106,23 @@ public class ImageLoaderWrapper {
                 .into(imageView);
     }
 
+    public static void loadImgWithThumbnail(Context context, String url, ImageView imageView){
+        GlideApp.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .thumbnail(GlideApp
+                        .with(context)
+                        .load(url)
+                )
+                .into(imageView);
+    }
+
 
 
     /********************************* 配合RoundimageView使用相关方法  ****************************************/
 
 
-    public static void loadImgWithRoundImage(Context context, String url, int placeholder, ImageView imageView) {
+    public static void loadImgWithAsBitmap(Context context, String url, int placeholder, ImageView imageView) {
         GlideApp.with(context)
                 .asBitmap()
                 .load(url)
@@ -118,7 +131,7 @@ public class ImageLoaderWrapper {
 
     }
 
-    public static void loadImgWithRoundImage(Context context, Uri url, int placeholder, ImageView imageView){
+    public static void loadImgWithAsBitmap(Context context, Uri url, int placeholder, ImageView imageView){
         GlideApp.with(context)
                 .asBitmap()
                 .load(url)
@@ -155,9 +168,10 @@ public class ImageLoaderWrapper {
 
 
 
-    public static void loadImgWithRoundImage(Context context, String url, ImageView imageView){
+    public static void loadImgWithAsBitmap(Context context, String url, ImageView imageView){
         GlideApp.with(context)
                 .asBitmap()
+                .placeholder(Default_holder)
                 .load(url)
                 .into(imageView);
     }
