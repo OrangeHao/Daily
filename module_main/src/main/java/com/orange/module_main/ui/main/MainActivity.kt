@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat
 import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
+import com.mit.thaiboxing.util.statusbar.setTransParentStatusBar
 import com.orange.module_base.base.BaseActivity
 import com.orange.module_base.base.BaseFragment
 import com.orange.module_base.constants.ARouterPaths
@@ -28,6 +29,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun initView() {
         super.initView()
+        setTransParentStatusBar()
+
         initNavigation()
 
         switchFragment(ARouterPaths.FRAGMENT_NewsMainFragment)
