@@ -16,6 +16,5 @@
 
 ### 截图
 
-<img src="https://github.com/OrangeHao/Daily/blob/master/screenshot/Screenshot_pictures.png"  height="30%" width="30%" >
-<img src="https://github.com/OrangeHao/Daily/blob/master/screenshot/screenshot_news.png"  height="30%" width="30%" >
-<img src=""  height="30%" width="30%" >
+<img src="https://github.com/OrangeHao/Daily/blob/master/screenshot/Screenshot_pictures.png"  height="50%" width="50%" >
+<img src="https://github.com/OrangeHao/Daily/blob/master/screenshot/screenshot_news.png"  height="50%" width="50%" >
