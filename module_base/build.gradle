@@ -77,4 +77,6 @@ dependencies {
     //widget
     api rootProject.ext.dependencies["FlycoTabLayout"]
 
+    api rootProject.ext.dependencies["TaskScheduler"]
+
 }
