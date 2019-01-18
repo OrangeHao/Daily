@@ -49,6 +49,10 @@ class BoringHotFragment : BaseMvpLazyFragment<BoringPicturesPresenter>(), Boring
         swipeLayout.setOnRefreshListener {
             mPresenter!!.loadBoringHotPictures()
         }
+
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            PhotoViewActivity.start(context!!,getAllPictures(),position)
+        }
     }
 
     override fun fetchData() {
@@ -79,5 +83,13 @@ class BoringHotFragment : BaseMvpLazyFragment<BoringPicturesPresenter>(), Boring
         mDataList.clear()
         mDataList.addAll(data)
         mAdapter!!.notifyDataSetChanged()
+    }
+
+    private fun getAllPictures():ArrayList<String>{
+        val tempList=ArrayList<String>()
+        for (item in mDataList){
+            tempList.addAll(item.pics)
+        }
+        return tempList
     }
 }

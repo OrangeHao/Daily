@@ -11,5 +11,6 @@ android {
     resourcePrefix "module_pictures_"
 }
 dependencies {
-    implementation 'com.android.support:support-v4:27.1.1'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4'
 }

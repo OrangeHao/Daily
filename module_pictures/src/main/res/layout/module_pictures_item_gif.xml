@@ -11,4 +11,14 @@
         android:scaleType="centerCrop"
         />
 
+
+    <ImageView
+        android:id="@+id/gif_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/pic_img"
+        android:src="@drawable/module_pictures_icon_gif_corner"
+        />
+
 </RelativeLayout>

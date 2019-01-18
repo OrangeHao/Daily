@@ -60,6 +60,10 @@ class BoringFragment : BaseMvpLazyFragment<BoringPicturesPresenter>(), BoringPic
                 mPresenter!!.loadBoringPictures(mPageIndex)
             }
         },recyclerview)
+
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            PhotoViewActivity.start(context!!,getAllPictures(),position)
+        }
     }
 
     override fun fetchData() {
@@ -93,5 +97,13 @@ class BoringFragment : BaseMvpLazyFragment<BoringPicturesPresenter>(), BoringPic
 
     override fun getHotDatas(data: List<BoringHotPicsBean>) {
 
+    }
+
+    private fun getAllPictures():ArrayList<String>{
+        val tempList=ArrayList<String>()
+        for (item in mDataList){
+            tempList.addAll(item.pics)
+        }
+        return tempList
     }
 }

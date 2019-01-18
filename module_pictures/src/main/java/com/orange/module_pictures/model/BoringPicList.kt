@@ -1,5 +1,7 @@
 package com.orange.module_pictures.model
 
+import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.orange.module_pictures.ui.jiandan.adapter.BoringHotPicAdapter
 import org.w3c.dom.Comment
 
 /**
@@ -27,7 +29,16 @@ data class BoringPicsBean(
     val user_id: String,
     val vote_negative: String,
     val vote_positive: String
-)
+):MultiItemEntity{
+
+    override fun getItemType(): Int {
+        if (pics.get(0).contains(".gif")){
+            return BoringHotPicAdapter.TYPE_GIF
+        }
+        return return BoringHotPicAdapter.TYPE_PIC
+    }
+
+}
 
 
 data class BoringHotPicList(
@@ -48,7 +59,16 @@ data class BoringHotPicsBean(
     val user_id: Int,
     val vote_negative: String,
     val vote_positive: String
-)
+):MultiItemEntity{
+
+    override fun getItemType(): Int {
+        if (pics.get(0).contains(".gif")){
+            return BoringHotPicAdapter.TYPE_GIF
+        }
+        return return BoringHotPicAdapter.TYPE_PIC
+    }
+
+}
 
 data class BoringExtra(
     val category_type: String,

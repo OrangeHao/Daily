@@ -106,14 +106,11 @@ public class ImageLoaderWrapper {
                 .into(imageView);
     }
 
-    public static void loadImgWithThumbnail(Context context, String url, ImageView imageView){
+    public static void loadImgAsGif(Context context, String url, ImageView imageView){
         GlideApp.with(context)
+                .asGif()
                 .load(url)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .thumbnail(GlideApp
-                        .with(context)
-                        .load(url)
-                )
                 .into(imageView);
     }
 

@@ -70,6 +70,10 @@ class HandyFragment : BaseMvpLazyFragment<HandyPicturesPresenter>(), HandyPictur
                 }
             },recyclerview)
         }
+
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            PhotoViewActivity.start(context!!,mDataList,position)
+        }
     }
 
     override fun fetchData() {
@@ -104,4 +108,5 @@ class HandyFragment : BaseMvpLazyFragment<HandyPicturesPresenter>(), HandyPictur
         swipeLayout.isRefreshing=false
         mAdapter!!.loadMoreComplete()
     }
+
 }

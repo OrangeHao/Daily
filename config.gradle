@@ -1,6 +1,6 @@
 ext {
 
-    isModule = true
+    isModule = false
 
     versions = [
         applicationId              :"com.orange.daily",
