@@ -10,6 +10,7 @@ import android.util.TypedValue;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestListener;
@@ -31,7 +32,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class ImageLoaderWrapper {
 
 
-    private static int Default_holder=R.color.colorPrimaryLight;
+    public static int Default_holder=R.color.colorPrimaryLight;
 
     /******************************* 一般方法 ***********************************/
 
@@ -110,6 +111,7 @@ public class ImageLoaderWrapper {
         GlideApp.with(context)
                 .asGif()
                 .load(url)
+                .priority(Priority.IMMEDIATE)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .into(imageView);
     }

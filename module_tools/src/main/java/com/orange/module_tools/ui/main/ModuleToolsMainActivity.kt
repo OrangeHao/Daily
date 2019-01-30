@@ -60,30 +60,30 @@ class ModuleToolsMainActivity : BaseActivity() {
 
 
 
-//            val start=System.currentTimeMillis()
-//            val decoder=GifDecoder(InputSource.InputStreamSource(bufferedInputStream))
-//            Log.d("czh", "decoder time:"+(System.currentTimeMillis()-start)/1000)
-//            val frame = Bitmap.createBitmap(decoder.width, decoder.height, Bitmap.Config.ARGB_8888)
-//            decoder.seekToFrame(0, frame)
-//            decoder.recycle()
-//            Logger.t("czh").d("bitmap size:"+frame.byteCount/1024+"kb")
-//            runOnUiThread {
-//                gifimageview.setImageBitmap(frame)
-//            }
+            val start=System.currentTimeMillis()
+            val decoder=GifDecoder(InputSource.InputStreamSource(bufferedInputStream))
+            Log.d("czh", "decoder time:"+(System.currentTimeMillis()-start)/1000)
+            val frame = Bitmap.createBitmap(decoder.width, decoder.height, Bitmap.Config.ARGB_8888)
+            decoder.seekToFrame(0, frame)
+            decoder.recycle()
+            Logger.t("czh").d("bitmap size:"+frame.byteCount/1024+"kb")
+            runOnUiThread {
+                gifimageview.setImageBitmap(frame)
+            }
 
 
             /**movie**/
-            val start=System.currentTimeMillis()
-            val movie = Movie.decodeStream(urlConnection.getInputStream())
-            Log.d("czh", "count time:"+(System.currentTimeMillis()-start)/1000)
-            val bitmap = Bitmap.createBitmap(movie.width(), movie.height(), Bitmap.Config.ARGB_8888)
-            val count = bitmap.getByteCount()
-            Log.d("czh", "count:$count")
-            var canva= Canvas(bitmap)
-            movie.draw(canva, 0f, 0f)
-            runOnUiThread {
-                    gifimageview.setImageBitmap(bitmap)
-            }
+//            val start=System.currentTimeMillis()
+//            val movie = Movie.decodeStream(urlConnection.getInputStream())
+//            Log.d("czh", "count time:"+(System.currentTimeMillis()-start)/1000)
+//            val bitmap = Bitmap.createBitmap(movie.width(), movie.height(), Bitmap.Config.ARGB_8888)
+//            val count = bitmap.getByteCount()
+//            Log.d("czh", "count:$count")
+//            var canva= Canvas(bitmap)
+//            movie.draw(canva, 0f, 0f)
+//            runOnUiThread {
+//                    gifimageview.setImageBitmap(bitmap)
+//            }
 
 
         } }).start()

@@ -3,7 +3,9 @@ package com.orange.module_pictures.ui.jiandan.adapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.orange.module_base.utils.glide.ImageLoaderWrapper
+import com.orange.module_base.utils.glide.ImageLoaderWrapper.Default_holder
 import com.orange.module_pictures.R
+import com.orange.module_pictures.utils.getSamllUrl
 
 /**
  * @author OrangeHao
@@ -16,6 +18,6 @@ class JianDanPicsListAdapter(data: ArrayList<String>?) : BaseQuickAdapter<String
 
     override fun convert(helper: BaseViewHolder, item: String) {
         ImageLoaderWrapper.loadImgDefault(helper.itemView.context,
-                item, helper.getView(R.id.pic_img))
+                item.getSamllUrl(), Default_holder,helper.getView(R.id.pic_img))
     }
 }

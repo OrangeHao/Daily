@@ -10,9 +10,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.orange.module_base.utils.glide.GlideApp
 import com.orange.module_base.utils.glide.ImageLoaderWrapper
+import com.orange.module_base.utils.glide.ImageLoaderWrapper.Default_holder
 import com.orange.module_pictures.R
 import com.orange.module_pictures.model.BoringPicsBean
 import com.orange.module_pictures.model.JianDanPicturesBean
+import com.orange.module_pictures.utils.getSamllUrl
 import com.orange.module_pictures.utils.gif.GifThumbnailManager
 import com.orhanobut.logger.Logger
 
@@ -35,15 +37,19 @@ class BoringPicsAdapter(data: ArrayList<BoringPicsBean>?) : BaseMultiItemQuickAd
 
 
     override fun convert(helper: BaseViewHolder, item: BoringPicsBean) {
+        Logger.t("czh").d(item.pics.get(0).getSamllUrl())
         when(item.itemType){
             TYPE_PIC->{
                 ImageLoaderWrapper.loadImgDefault(helper.itemView.context,
-                        item.pics.get(0), helper.getView(R.id.pic_img))
+                        item.pics.get(0).getSamllUrl(),Default_holder, helper.getView(R.id.pic_img))
             }
             TYPE_GIF->{
-                val img=helper.getView(R.id.pic_img) as ImageView
-                img.setTag(item.pics.get(0))
-                GifThumbnailManager.getInstance().loadGifCover(item.pics.get(0),img)
+//                val img=helper.getView(R.id.pic_img) as ImageView
+//                img.setTag(item.pics.get(0))
+//                GifThumbnailManager.getInstance().loadGifCover(item.pics.get(0),img)
+                Logger.t("czh").d(item.pics.get(0).getSamllUrl())
+                ImageLoaderWrapper.loadImgWithAsBitmap(helper.itemView.context,
+                        item.pics.get(0).getSamllUrl(),Default_holder,helper.getView(R.id.pic_img))
             }
         }
     }
