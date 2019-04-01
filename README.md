@@ -4,6 +4,8 @@
 
 [组件是如何通信的？揭秘ARouter路由机制](https://www.jianshu.com/p/ab9da7c7da4f)
 
+[Android组件化方案](https://blog.csdn.net/guiying712/article/details/55213884)
+
 [Android MVVM组件化架构方案](https://juejin.im/post/5c0dbe7ee51d451dac076e6c)
 
 [Android组件化框架搭建](https://www.jianshu.com/p/00746e6fb48a)

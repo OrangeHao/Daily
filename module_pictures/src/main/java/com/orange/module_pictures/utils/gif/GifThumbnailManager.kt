@@ -3,6 +3,7 @@ package com.orange.module_pictures.utils.gif
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Movie
+import android.media.MediaMetadataRetriever
 import android.util.Log
 import android.util.LruCache
 import android.widget.ImageView

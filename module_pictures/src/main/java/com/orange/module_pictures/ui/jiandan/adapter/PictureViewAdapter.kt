@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.github.chrisbanes.photoview.PhotoView
 import com.orange.module_base.utils.glide.ImageLoaderWrapper
 
 import com.orange.module_pictures.R
@@ -24,7 +25,8 @@ class PictureViewAdapter(private val list: List<String>) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(container.context).inflate(R.layout.module_pictures_item_picture_view, null)
-        val imgView=view.findViewById<ImageView>(R.id.img)
+        val imgView=view.findViewById<PhotoView>(R.id.img)
+        imgView.minimumScale=0.5f
         val imgGif=view.findViewById<ImageView>(R.id.gif_mark)
 
         if (list.get(position).contains(".gif")){

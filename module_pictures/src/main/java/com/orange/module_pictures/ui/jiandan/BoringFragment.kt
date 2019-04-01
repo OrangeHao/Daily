@@ -2,12 +2,10 @@ package com.orange.module_pictures.ui.jiandan
 
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.orange.module_base.base.BaseMvpLazyFragment
 import com.orange.module_base.utils.dp2px
 
-import com.orange.module_pictures.R
 import com.orange.module_pictures.model.BoringHotPicsBean
 import com.orange.module_pictures.model.BoringPicsBean
 import com.orange.module_pictures.ui.jiandan.adapter.BoringPicsAdapter
@@ -15,6 +13,10 @@ import com.orange.module_pictures.ui.jiandan.mvp.BoringPicturesPresenter
 import com.orange.module_pictures.ui.jiandan.mvp.BoringPicturesView
 import com.orange.module_pictures.utils.DividerGridItemDecoration
 import kotlinx.android.synthetic.main.module_pictures_fragment_boring.*
+import android.support.v7.widget.StaggeredGridLayoutManager
+import android.R
+
+
 
 
 /**
@@ -25,7 +27,7 @@ import kotlinx.android.synthetic.main.module_pictures_fragment_boring.*
  */
 
 class BoringFragment : BaseMvpLazyFragment<BoringPicturesPresenter>(), BoringPicturesView {
-    override fun getLayoutId(): Int = R.layout.module_pictures_fragment_boring
+    override fun getLayoutId(): Int = com.orange.module_pictures.R.layout.module_pictures_fragment_boring
 
     private val mDataList = ArrayList<BoringPicsBean>()
     private var mAdapter: BoringPicsAdapter? = null
@@ -45,11 +47,14 @@ class BoringFragment : BaseMvpLazyFragment<BoringPicturesPresenter>(), BoringPic
     override fun initView() {
         super.initView()
         mAdapter = BoringPicsAdapter(mDataList)
-        recyclerview.setLayoutManager(GridLayoutManager(context, 2))
+        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        layoutManager.gapStrategy=StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        recyclerview.itemAnimator=null
+        recyclerview.setLayoutManager(layoutManager)
         recyclerview.addItemDecoration(DividerGridItemDecoration(2, context!!.dp2px( 6), false))
         recyclerview.setAdapter(mAdapter)
 
-        swipeLayout.setColorSchemeResources(R.color.colorPrimary)
+        swipeLayout.setColorSchemeResources(com.orange.module_pictures.R.color.colorPrimary)
         swipeLayout.setOnRefreshListener {
             mPageIndex=1
             mPresenter!!.loadBoringPictures(mPageIndex)
