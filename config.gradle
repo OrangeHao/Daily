@@ -1,20 +1,20 @@
 ext {
 
-    isModule = false
+    isModule = true
 
     versions = [
         applicationId              :"com.orange.daily",
         versionCode                : 1,                    //版本号
         versionName                : "1.0.0",              //版本名称
 
-        kotlin_version             :"1.2.71",
+        kotlin_version             :"1.3.41",
 
-        compileSdkVersion          : 27,
+        compileSdkVersion          : 28,
         buildToolsVersion          : "28.0.3",
         minSdkVersion              : 21,
-        targetSdkVersion           : 27,
+        targetSdkVersion           : 28,
 
-        androidSupportSdkVersion   : "27.1.1",
+        androidSupportSdkVersion   : "28.0.0",
         constraintLayoutVersion    : "1.1.1",
         multidexVersion            : "1.0.3",
 

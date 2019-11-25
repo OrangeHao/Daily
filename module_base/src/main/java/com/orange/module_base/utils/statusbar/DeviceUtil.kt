@@ -1,4 +1,4 @@
-package com.mit.thaiboxing.util.statusbar
+package com.orange.module_base.utils.statusbar
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,12 +8,6 @@ import android.text.TextUtils
 import android.util.Log
 import java.util.*
 
-/**
- * @author Lin
- * @date 2018/10/22
- * @function 手机设备工具类
- * @Description
- */
 private const val STATUSBAR_KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name"
 private const val STATUSBAR_KEY_FLYME_VERSION_NAME = "ro.build.display.id"
 private const val FLYME = "flyme"

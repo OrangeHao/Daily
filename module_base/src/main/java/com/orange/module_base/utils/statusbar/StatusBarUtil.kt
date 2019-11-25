@@ -1,4 +1,4 @@
-package com.mit.thaiboxing.util.statusbar
+package com.orange.module_base.utils.statusbar
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -17,15 +17,6 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 
-/**
- * @author Lin
- * @date 2018/10/20
- * @function 状态栏工具类
- * @Description
- * 1、使用本工具类时，为了兼容4.4，除了状态栏覆盖在界面上的情况外(比如顶部是图片)，均已将根布局的fitsSystemWindows默认设为"true"；
- * 2、设置状态栏为深色或浅色模式的代码应在设置颜色之后调用；
- * 3、侧滑删除Activity(使用Snake库)时，状态栏不会随之侧滑，所以前后页面的状态栏颜色不同时尽量避免侧滑删除。
- */
 
 private const val STATUSBAR_TYPE_DEFAULT = 0x00 //系统默认的状态栏
 private const val STATUSBAR_TYPE_MIUI = 0x01
