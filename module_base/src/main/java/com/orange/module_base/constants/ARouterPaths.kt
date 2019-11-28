@@ -21,5 +21,8 @@ class ARouterPaths{
         //*************************************tools模块*****************************************/
         const val ACTIVITY_ModuleToolsMainActivity="/tools/ModuleToolsMainActivity"
 
+
+
+
     }
 }

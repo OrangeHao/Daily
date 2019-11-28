@@ -1,1 +1,1 @@
-include ':app', ':module_base', ':module_main', ':module_news', ':module_pictures', ':module_tools'
+include ':app', ':module_base', ':module_main', ':module_news', ':module_pictures', ':module_tools', ':module_collector'

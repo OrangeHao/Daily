@@ -64,6 +64,9 @@ dependencies {
 
     api rootProject.ext.dependencies["rxJava"]
     api rootProject.ext.dependencies["rxAndroid"]
+    api (rootProject.ext.dependencies["rxPermissions"]){
+        exclude group: 'io.reactivex.rxjava2'
+    }
 
     api rootProject.ext.dependencies["logger"]
 

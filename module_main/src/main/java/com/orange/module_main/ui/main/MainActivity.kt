@@ -5,14 +5,12 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.text.TextUtils
-import android.view.Menu
 import android.view.MenuItem
-import com.mit.thaiboxing.util.statusbar.setTransParentStatusBar
 import com.orange.module_base.base.BaseActivity
 import com.orange.module_base.base.BaseFragment
 import com.orange.module_base.constants.ARouterPaths
 import com.orange.module_base.utils.ARouterUtils
-import com.orange.module_base.utils.ActivityJumper
+import com.orange.module_base.utils.statusbar.setTransParentStatusBar
 import com.orange.module_main.R
 import kotlinx.android.synthetic.main.module_main_activity_main.*
 import kotlinx.android.synthetic.main.module_main_content_main.*
