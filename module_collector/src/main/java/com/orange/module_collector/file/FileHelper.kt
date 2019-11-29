@@ -1,5 +1,7 @@
 package com.orange.module_collector.file
 
+import android.content.Context
+import android.net.Uri
 import android.os.Environment
 import android.text.TextUtils
 import android.util.Log
@@ -12,92 +14,6 @@ import java.io.*
 class FileHelper{
 
     companion object{
-
-        val ROOT_PATH= Environment.getExternalStorageDirectory().toString() + "/powerbank/"
-        val DATA_DIR_NAME= "ADdata"
-
-        val USB_DATA_DIR_NAME= "usb"
-        val NET_DATA_DIR_NAME= "download"
-
-        val PLAY_DATA_DIR_NAME_ONE= "playdata1"
-        val PLAY_DATA_DIR_NAME_TWO= "playdata2"
-
-        val UPDATE_APK="Update.apk"
-
-        //app根目录
-        fun getAppRootPath(): String {
-            var file = File(ROOT_PATH)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return file.absolutePath
-        }
-
-        //更新apk存放地址
-        fun getUpdateApkPath():String{
-            var file=File(getAppRootPath() + File.separator+UPDATE_APK)
-            if (file.exists()) {
-                file.delete()
-            }
-            return file.absolutePath
-        }
-
-
-        //广告相关文件夹/powerbank/ADdata/
-        fun getDataDirctory():String{
-            var file=File(getAppRootPath() + File.separator+DATA_DIR_NAME)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return file.absolutePath
-        }
-
-        //存放从usb拷贝来的文件的存放目录 /powerbank/ADdata/usb
-        fun getUsbDirctory():String{
-            var file=File(getDataDirctory() + File.separator+USB_DATA_DIR_NAME)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return file.absolutePath
-        }
-
-
-        //网络下载的文件存放目录  /powerbank/ADdata/download
-        fun getDownloadDirctory():String{
-            var file=File(getDataDirctory() + File.separator+NET_DATA_DIR_NAME)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return file.absolutePath
-        }
-
-
-        //文件存放路径2   /powerbank/ADdata/playdata2
-        fun getPlayDataDirctoryTwo():String{
-            var file=File(getDataDirctory() + File.separator+PLAY_DATA_DIR_NAME_TWO)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return file.absolutePath
-        }
-
-        //文件存放路径1   /powerbank/ADdata/playdata1
-        fun getPlayDataDirctoryOne():String{
-            var file=File(getDataDirctory() + File.separator+PLAY_DATA_DIR_NAME_ONE)
-            if (!file.exists()) {
-                file.mkdirs()
-            }
-            return file.absolutePath
-        }
-
-
-        fun getPlayFolderByIndex(index:Int):String{
-            if (index==1){
-                return getPlayDataDirctoryOne()
-            }else{
-                return getPlayDataDirctoryTwo()
-            }
-        }
 
         fun getFilePathByName(file: File,name:String):String{
             var result=""
@@ -227,6 +143,45 @@ class FileHelper{
                 }
             }
             return flag
+        }
+
+
+
+
+        fun copyFileFromUri(context: Context,uri:Uri, newPath:String): Boolean {
+
+            var newFile=File(newPath)
+            if (newFile.exists()){
+                newFile.delete()
+            }
+
+            val fileInputStream = context.contentResolver.openInputStream(uri)
+            val fileOutputStream = FileOutputStream(newFile)
+
+//            fileInputStream.buffered(1024).use { input->
+//                fileOutputStream.use { fileOut->
+//                    input.copyTo(fileOut)
+//                }
+//            }
+//            return true
+            try {
+                val buffer = ByteArray(1024)
+                var byteRead=0
+                var totalByteRead=0
+                while ({byteRead=fileInputStream.read(buffer);byteRead}()>0) {
+                    fileOutputStream.write(buffer, 0, byteRead)
+                    totalByteRead+=byteRead
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.d("czh",e.toString())
+                return false
+            }finally {
+                fileInputStream.close()
+                fileOutputStream.flush()
+                fileOutputStream.close()
+                return true
+            }
         }
 
 

@@ -1,15 +1,13 @@
 package com.orange.module_collector
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
-import android.util.Log
 import com.orange.module_base.base.BaseActivity
 import com.orange.module_base.utils.checkPermissionWriteExteralStorage
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.module_collector_activity_main.*
 import java.io.File
-import java.lang.StringBuilder
 
 
 class ModuleCollectorMainActivity : BaseActivity() {
@@ -17,9 +15,6 @@ class ModuleCollectorMainActivity : BaseActivity() {
 
 
     override fun initView() {
-
-
-        Log.d("czh","sdfadf")
 
         checkPermissionWriteExteralStorage {
             if (!it){
@@ -29,13 +24,9 @@ class ModuleCollectorMainActivity : BaseActivity() {
 
 
         val path1= Environment.getExternalStorageDirectory().toString()
-        val path2= Environment.getExternalStoragePublicDirectory("").toString()
+        val path2= Environment.getExternalStoragePublicDirectory("aaa").toString()
 
 
-        Log.d("czh",path1)
-        Log.d("czh",path2)
-        Logger.t("czh").d(path1)
-        Logger.t("czh").d(path2)
 
         val intent = intent
         val action = intent.action
@@ -72,4 +63,5 @@ class ModuleCollectorMainActivity : BaseActivity() {
         }
         testTextView.text=stringBuilder.toString()
     }
+
 }
