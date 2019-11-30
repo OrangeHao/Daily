@@ -82,6 +82,7 @@ ext {
             "TaskScheduler"       : "com.github.SilenceDut:TaskScheduler:${versions["taskSchedulerVersion"]}",
 
             "FlycoTabLayout"      : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "Xpopup"              : "com.lxj:xpopup:1.8.10"
     ]
 
 

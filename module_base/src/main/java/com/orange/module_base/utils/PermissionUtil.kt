@@ -41,5 +41,5 @@ fun BaseActivity.checkPermissionPhoneState(listener: (granted: Boolean) -> Unit)
  * 获取IMEI
  */
 fun BaseActivity.checkPermissionWriteExteralStorage(listener: (granted: Boolean) -> Unit) {
-   RxPermissions(this).checkPermission(listener, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+   RxPermissions(this).checkPermission(listener, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
 }

@@ -149,7 +149,6 @@ class FileHelper{
 
 
         fun copyFileFromUri(context: Context,uri:Uri, newPath:String): Boolean {
-
             var newFile=File(newPath)
             if (newFile.exists()){
                 newFile.delete()
@@ -158,12 +157,6 @@ class FileHelper{
             val fileInputStream = context.contentResolver.openInputStream(uri)
             val fileOutputStream = FileOutputStream(newFile)
 
-//            fileInputStream.buffered(1024).use { input->
-//                fileOutputStream.use { fileOut->
-//                    input.copyTo(fileOut)
-//                }
-//            }
-//            return true
             try {
                 val buffer = ByteArray(1024)
                 var byteRead=0
@@ -183,6 +176,9 @@ class FileHelper{
                 return true
             }
         }
+
+
+
 
 
     }

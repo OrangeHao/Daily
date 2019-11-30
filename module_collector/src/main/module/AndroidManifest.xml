@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.orange.module_collector">
 
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name="com.orange.module_base.app.BaseApplication"
         android:allowBackup="true"
@@ -27,6 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ModuleCollectorMainActivity">
+
         </activity>
     </application>
 
