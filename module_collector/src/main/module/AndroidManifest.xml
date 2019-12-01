@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.ReceiverActivity">
+        <activity android:name=".ui.receive.ReceiverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

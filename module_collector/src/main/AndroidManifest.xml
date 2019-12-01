@@ -7,7 +7,7 @@ package="com.orange.module_collector">
     </activity>
 
 
-    <activity android:name=".ui.ReceiverActivity">
+    <activity android:name=".ui.receive.ReceiverActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
