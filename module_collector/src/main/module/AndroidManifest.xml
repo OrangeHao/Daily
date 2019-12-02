@@ -10,7 +10,7 @@
     <application
         android:name="com.orange.module_base.app.BaseApplication"
         android:allowBackup="true"
-        android:label="@string/app_name"
+        android:label="@string/module_collector_app_name"
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">

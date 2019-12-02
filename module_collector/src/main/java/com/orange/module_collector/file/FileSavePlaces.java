@@ -18,7 +18,7 @@ import java.util.List;
 public class FileSavePlaces {
 
 
-    private static final String Root_Name="collections";
+    private static final String Root_Name="Collections";
 
 
     private static String getExternalPath(Context context){

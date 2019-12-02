@@ -19,32 +19,32 @@ class ReceiverActivity : BaseActivity() {
     override fun getContentLayoutId(): Int = R.layout.module_collector_activity_receiver
 
 
-    val mFolderList=ArrayList<FolderBean>()
-    var mAdapter:FolderListAdapter?=null
+    val mFolderList = ArrayList<FolderBean>()
+    var mAdapter: FolderListAdapter? = null
 
-    var mReceiveData=ArrayList<Uri>()
+    var mReceiveData = ArrayList<Uri>()
 
 
     override fun initView() {
 
 
         checkPermissionWriteExteralStorage {
-            if (!it){
+            if (!it) {
                 finish()
             }
         }
 
 
-       initRecyclerView()
+        initRecyclerView()
     }
 
-    fun initRecyclerView(){
+    fun initRecyclerView() {
         mAdapter = FolderListAdapter(mFolderList)
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-        layoutManager.gapStrategy= StaggeredGridLayoutManager.GAP_HANDLING_NONE
-        recyclerview.itemAnimator=null
+        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_NONE
+        recyclerview.itemAnimator = null
         recyclerview.setLayoutManager(layoutManager)
-        recyclerview.addItemDecoration(DividerGridItemDecoration(3, dp2px( 6), false))
+        recyclerview.addItemDecoration(DividerGridItemDecoration(3, dp2px(6), false))
         recyclerview.setAdapter(mAdapter)
 
         swipeLayout.setOnRefreshListener {
@@ -52,9 +52,9 @@ class ReceiverActivity : BaseActivity() {
         }
 
         mAdapter?.setOnItemClickListener { adapter, view, position ->
-            if (position==mFolderList.size-1){
+            if (position == mFolderList.size - 1) {
                 createNewFolder()
-            }else{
+            } else {
                 startCopyFiles(mFolderList.get(position))
             }
         }
@@ -67,7 +67,7 @@ class ReceiverActivity : BaseActivity() {
     }
 
 
-    private fun getData(){
+    private fun getData() {
         val intent = intent
         val action = intent.action
         val type = intent.type
@@ -82,9 +82,9 @@ class ReceiverActivity : BaseActivity() {
         } else if (Intent.ACTION_SEND_MULTIPLE == action && type != null) {
             if (type.startsWith("image/")) {
                 val imageUris = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
-                val stringBuilder=StringBuilder()
+                val stringBuilder = StringBuilder()
                 if (imageUris != null) {
-                    for (item in imageUris){
+                    for (item in imageUris) {
                         mReceiveData.add(item)
                         stringBuilder.append(item.path).append("\n")
                     }
@@ -94,33 +94,34 @@ class ReceiverActivity : BaseActivity() {
     }
 
 
-    private fun StartCopyFiles(){
-
+    private fun startCopyFiles(folder: FolderBean) {
+        val dialog = CopyFileDialog(this).apply {
+            setCopyData(mReceiveData)
+            setTarget(folder)
+        }
+        XPopup.Builder(this)
+                .dismissOnTouchOutside(false)
+                .asCustom(dialog)
+                .show()
     }
 
 
-    private fun startCopyFiles(folder:FolderBean){
-
-    }
-
-
-    private fun createNewFolder(){
+    private fun createNewFolder() {
         XPopup.Builder(this).asInputConfirm("创建新收藏集", "请输入名称") { text ->
-            FileSavePlaces.createNewCollection(this,text)
+            FileSavePlaces.createNewCollection(this, text)
             getFolderList()
         }.show()
     }
 
 
-    private fun getFolderList(){
+    private fun getFolderList() {
         mFolderList.clear()
         mFolderList.addAll(FileSavePlaces.getFolderList(this))
         //add item
         mFolderList.add(FolderBean())
         mAdapter?.notifyDataSetChanged()
-        swipeLayout.isRefreshing=false
+        swipeLayout.isRefreshing = false
     }
-
 
 
 }
