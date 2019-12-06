@@ -3,7 +3,7 @@
 package="com.orange.module_collector">
 
 <application>
-    <activity android:name=".ModuleCollectorMainActivity">
+    <activity android:name=".ui.main.ModuleCollectorMainActivity">
     </activity>
 
 
@@ -23,8 +23,9 @@ package="com.orange.module_collector">
             <data android:mimeType="image/*" />
         </intent-filter>
     </activity>
-    <activity android:name=".ModuleCollectorMainActivity">
+    <activity android:name=".ui.main.ModuleCollectorMainActivity">
     </activity>
+
 
 
 </application>

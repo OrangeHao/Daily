@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.FolderBean
+import com.orange.module_collector.common.PNG_POSTFIX
 import com.orange.module_collector.file.FileHelper
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -99,10 +100,10 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
     }
 
     private fun getTargetPath(uri: Uri):String{
-        val name=System.currentTimeMillis().toString()+".czh"
+        val name=System.currentTimeMillis().toString()+ PNG_POSTFIX
         val file=File(mTargetFolderBean?.path,name)
         val path=file.absolutePath
-        Log.d("czh","path new:"+path)
+        Log.d("czh","copy to path:"+path)
         return path
     }
 }

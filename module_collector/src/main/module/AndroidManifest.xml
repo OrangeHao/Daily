@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.orange.module_collector">
 
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,11 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.receive.ReceiverActivity">
+
+
+        <activity
+            android:theme="@style/module_collector_SplashTheme"
+            android:name=".ui.main.SpkashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.receive.ReceiverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -30,9 +36,12 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".ModuleCollectorMainActivity">
 
+
+        <activity android:name=".ui.main.ModuleCollectorMainActivity">
         </activity>
+
+
     </application>
 
 </manifest>
