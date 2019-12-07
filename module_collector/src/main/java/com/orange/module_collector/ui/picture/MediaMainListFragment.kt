@@ -50,7 +50,7 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
 
 
         mAdapter?.setOnItemClickListener { adapter, view, position ->
-
+            PictureViewActivity.start(context!!,mDataList,position)
         }
     }
 

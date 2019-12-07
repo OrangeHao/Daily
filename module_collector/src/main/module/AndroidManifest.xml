@@ -13,35 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-
+        <activity android:name=".ui.picture.PictureViewActivity"></activity>
         <activity
-            android:theme="@style/module_collector_SplashTheme"
-            android:name=".ui.main.SpkashActivity">
+            android:name=".ui.main.SpkashActivity"
+            android:theme="@style/module_collector_SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.receive.ReceiverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="image/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".ui.main.ModuleCollectorMainActivity">
-        </activity>
-
-
+        <activity android:name=".ui.main.ModuleCollectorMainActivity"></activity>
     </application>
 
 </manifest>
