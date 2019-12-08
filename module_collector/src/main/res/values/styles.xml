@@ -9,7 +9,7 @@
     </style>
 
     <style name="module_collector_SplashTheme" parent="module_collector_AppTheme">
-        <item name="android:background">@drawable/module_collector_bg_test</item>
+        <item name="android:background">@drawable/module_collector_bg_splash</item>
     </style>
 
 </resources>

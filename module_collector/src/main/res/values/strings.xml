@@ -1,10 +1,6 @@
 <resources>
-    <string name="module_collector_app_name">module_collector</string>
 
+    <string name="module_collector_app_name">Secret</string>
     <string name="module_collector_copy_tips">是否收藏到“%1$s”？</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 </resources>

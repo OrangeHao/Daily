@@ -12,8 +12,11 @@
         android:label="@string/module_collector_app_name"
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
+        android:icon="@mipmap/ic_launcher"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.picture.PictureViewActivity"></activity>
+        <activity android:name=".ui.picture.PictureViewActivity">
+
+        </activity>
         <activity
             android:name=".ui.main.SpkashActivity"
             android:theme="@style/module_collector_SplashTheme">
