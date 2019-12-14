@@ -4,12 +4,10 @@ import com.lxj.xpopup.core.CenterPopupView
 import com.lxj.xpopup.animator.PopupAnimator
 import android.content.Context
 import android.net.Uri
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.FolderBean
 import com.orange.module_collector.common.PNG_POSTFIX
@@ -37,6 +35,7 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
     }
 
 
+    private var mIsDelete=false
     private var mTargetFolderBean:FolderBean?=null
     fun setTarget(folderBean: FolderBean){
         mTargetFolderBean=folderBean
@@ -47,6 +46,10 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
         super.onCreate()
         findViewById<TextView>(R.id.tv_title).setText(context.getString(R.string.module_collector_copy_tips,mTargetFolderBean?.name))
         mProgressTextView=findViewById(R.id.tv_progress)
+
+        findViewById<CheckBox>(R.id.checkBox).setOnCheckedChangeListener { buttonView, isChecked ->
+            mIsDelete=isChecked
+        }
         findViewById<View>(R.id.tv_confirm).setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
                startCopyFile()
@@ -65,13 +68,19 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
         }
 
         findViewById<LinearLayout>(R.id.layout_confirm).visibility=View.GONE
+        findViewById<CheckBox>(R.id.checkBox).visibility=View.GONE
         findViewById<RelativeLayout>(R.id.progress_layout).visibility=View.VISIBLE
 
         Observable.create(object:ObservableOnSubscribe<Int> {
             override fun subscribe(emitter: ObservableEmitter<Int>) {
                 var count=0
                 for (item in mReceiveData){
+                    Log.d("czh","uri:${item.toString()}")
                     FileHelper.copyFileFromUri(context,item,getTargetPath(item))
+                    if (mIsDelete){
+                        val delete=context.contentResolver.delete(item,null,null)
+                        Log.d("czh","isdelete:$delete")
+                    }
                     count++
                     emitter.onNext(count)
                 }
