@@ -26,8 +26,6 @@ package="com.orange.module_collector">
     <activity android:name=".ui.main.ModuleCollectorMainActivity">
     </activity>
 
-
-
 </application>
 
 </manifest>

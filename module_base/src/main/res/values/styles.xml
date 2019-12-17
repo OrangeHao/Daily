@@ -22,4 +22,12 @@
         <item name="shadow_right">@drawable/shadow_right</item>
         <item name="shadow_bottom">@drawable/shadow_bottom</item>
     </style>
+
+
+    <!-- 主界面 设置Style -->
+    <style name="module_base_MainActivityColorTranslucentTheme" parent="@style/module_base_AppTheme"/>
+
+    <!-- StatusBar为透明色 -->
+    <style name="module_base_ColorTranslucentTheme" parent="@style/module_base_AppTheme" />
+
 </resources>

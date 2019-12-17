@@ -15,7 +15,7 @@ import com.orange.module_collector.utils.DividerGridItemDecoration
 import kotlinx.android.synthetic.main.module_collector_activity_receiver.*
 
 
-class ReceiverActivity : BaseActivity() {
+class ReceiverActivity : BaseActivity() ,CopyFileDialog.CopyFileListener{
     override fun getContentLayoutId(): Int = R.layout.module_collector_activity_receiver
 
 
@@ -121,6 +121,10 @@ class ReceiverActivity : BaseActivity() {
         mFolderList.add(FolderBean())
         mAdapter?.notifyDataSetChanged()
         swipeLayout.isRefreshing = false
+    }
+
+    override fun complete() {
+
     }
 
 

@@ -1,18 +1,21 @@
 package com.orange.module_collector.ui.receive
 
-import com.lxj.xpopup.core.CenterPopupView
-import com.lxj.xpopup.animator.PopupAnimator
 import android.content.Context
+import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.lxj.xpopup.core.CenterPopupView
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.FolderBean
 import com.orange.module_collector.common.PNG_POSTFIX
 import com.orange.module_collector.file.FileHelper
-import io.reactivex.*
+import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
+import io.reactivex.ObservableOnSubscribe
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -40,6 +43,16 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
     fun setTarget(folderBean: FolderBean){
         mTargetFolderBean=folderBean
     }
+
+
+    interface CopyFileListener{
+        fun complete()
+    }
+    private var mListener:CopyFileListener?=null
+    fun setCopyListener(copyFileListener: CopyFileListener){
+        mListener=copyFileListener
+    }
+
 
     private var mProgressTextView:TextView?=null
     override fun onCreate() {
@@ -78,8 +91,8 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
                     Log.d("czh","uri:${item.toString()}")
                     FileHelper.copyFileFromUri(context,item,getTargetPath(item))
                     if (mIsDelete){
-                        val delete=context.contentResolver.delete(item,null,null)
-                        Log.d("czh","isdelete:$delete")
+//                        val delete=context.contentResolver.delete(item,null,null)
+                        deleteFileByUri(context,item)
                     }
                     count++
                     emitter.onNext(count)
@@ -91,6 +104,7 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
                 .subscribe(object :Observer<Int>{
                     override fun onComplete() {
                         Toast.makeText(context,"收藏成功",Toast.LENGTH_SHORT).show()
+                        mListener?.complete()
                         dismiss()
                     }
 
@@ -115,4 +129,29 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
         Log.d("czh","copy to path:"+path)
         return path
     }
+
+
+    private fun deleteFileByUri(context: Context,uri: Uri){
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cur: Cursor = MediaStore.Images.Media.query(context.contentResolver, uri, projection, null, null)
+        cur.moveToFirst()
+        val path: String = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA))
+        val file = File(path)
+        Log.d("czh","path from uri:"+file.absolutePath)
+        if(file.exists()){
+            file.delete()
+            updateFileFromDatabase(context,file.absolutePath)
+        }
+        cur.close()
+    }
+
+    private fun updateFileFromDatabase(context: Context,filepath:String){
+        val where=MediaStore.Audio.Media.DATA+" like \""+filepath+"%"+"\""
+        val i=context.getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,where,null)
+        if(i>0){
+
+        }
+    }
+
+
 }

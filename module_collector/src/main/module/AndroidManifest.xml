@@ -9,10 +9,10 @@
     <application
         android:name="com.orange.module_base.app.BaseApplication"
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/module_collector_app_name"
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
-        android:icon="@mipmap/ic_launcher"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.picture.PictureViewActivity">
 
@@ -42,7 +42,11 @@
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.ModuleCollectorMainActivity"></activity>
+        <activity
+            android:name=".ui.main.ModuleCollectorMainActivity"
+            android:theme="@style/module_base_MainActivityColorTranslucentTheme">
+
+        </activity>
     </application>
 
 </manifest>

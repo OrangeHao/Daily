@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- 启动页 引导页设置StatusBar为透明色 -->
+    <style name="module_base_ColorTranslucentTheme" parent="@style/module_base_AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+</resources>
