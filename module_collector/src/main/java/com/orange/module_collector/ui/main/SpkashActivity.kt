@@ -21,10 +21,9 @@ class SpkashActivity : BaseActivity() {
                 Handler().postDelayed({
                     startActivity(Intent(mContext, ModuleCollectorMainActivity::class.java))
                     finish()
-                }, 1000 * 2)
+                }, 500*1)
             }
         }
-
 
     }
 

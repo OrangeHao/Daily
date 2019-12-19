@@ -3,6 +3,7 @@ package com.orange.module_collector.ui.picture
 
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.orange.module_base.base.BaseMvpLazyFragment
 import com.orange.module_base.utils.dp2px
@@ -22,6 +23,8 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
 
     private val mDataList = ArrayList<MediaBean>()
     private var mAdapter: MediaListsAdapter? = null
+
+    private val mMarkedList= ArrayList<MediaBean>()
 
     companion object {
         @JvmStatic
@@ -48,6 +51,12 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
             mPresenter?.getAllDataUnderFolder()
         }
 
+        mAdapter?.setOnItemLongClickListener (object :BaseQuickAdapter.OnItemLongClickListener{
+            override fun onItemLongClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int): Boolean {
+
+                return true
+            }
+        })
 
         mAdapter?.setOnItemClickListener { adapter, view, position ->
             PictureViewActivity.start(context!!,mDataList,position)
