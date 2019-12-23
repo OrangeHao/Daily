@@ -7,13 +7,17 @@ import java.io.Serializable
 /**
  * created by czh on 2019/11/30
  */
-data class MediaBean(var name: String, var path: String, var createTime: Long) : MultiItemEntity,Serializable {
+data class MediaBean(var name: String="", var path: String="", var createTime: Long=0L) : MultiItemEntity,Serializable {
+
+
+    private var mBeanType=MediaListsAdapter.TYPE_PIC
 
     override fun getItemType(): Int {
-        if (path.contains(".gif")){
-            return MediaListsAdapter.TYPE_VIDEO
-        }
-        return return MediaListsAdapter.TYPE_PIC
+        return mBeanType
+    }
+
+    fun setBeanType(type:Int){
+        mBeanType=type
     }
 
 }

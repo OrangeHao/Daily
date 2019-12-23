@@ -5,6 +5,8 @@ import android.util.Log
 import com.orange.module_base.base.BasePresenter
 import com.orange.module_collector.beans.MediaBean
 import com.orange.module_collector.file.FileSavePlaces
+import com.orange.module_collector.ui.picture.adapter.MediaListsAdapter.Companion.TYPE_DATE_TITLE
+import com.orange.module_collector.utils.CalendarUtils
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -23,7 +25,7 @@ class MediaMainListPresenter(val context: Context) : BasePresenter<MediaMainList
     fun getAllDataUnderFolder(){
         Single.create(object:SingleOnSubscribe<List<MediaBean>>{
             override fun subscribe(p0: SingleEmitter<List<MediaBean>>) {
-                p0.onSuccess(FileSavePlaces.getAllMediaData(context))
+                p0.onSuccess(addDateTitleToDataList(FileSavePlaces.getAllMediaData(context)))
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,6 +45,23 @@ class MediaMainListPresenter(val context: Context) : BasePresenter<MediaMainList
 
                 })
     }
+
+
+    fun addDateTitleToDataList(list: List<MediaBean>): List<MediaBean>{
+        val tempList= mutableListOf<MediaBean>()
+        for((index,item) in list.withIndex()){
+            if (index==0 || !CalendarUtils.isOneDay(item.createTime,list.get(index-1).createTime)){
+                val mediaBean=MediaBean(createTime = item.createTime)
+                mediaBean.setBeanType(TYPE_DATE_TITLE)
+//                tempList.add(mediaBean)
+                tempList.add(item)
+            }else{
+                tempList.add(item)
+            }
+        }
+        return tempList
+    }
+
 
 
 }
