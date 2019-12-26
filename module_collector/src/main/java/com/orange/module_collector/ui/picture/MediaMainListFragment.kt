@@ -10,6 +10,7 @@ import com.orange.module_base.utils.dp2px
 
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.MediaBean
+import com.orange.module_collector.beans.MediaSection
 import com.orange.module_collector.ui.picture.adapter.MediaListsAdapter
 import com.orange.module_collector.utils.DividerGridItemDecoration
 import com.orange.module_pictures.ui.jiandan.mvp.MediaMainListPresenter
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.module_collector_fragment_picture_list.*
 class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), MediaMainListView {
     override fun getLayoutId(): Int = R.layout.module_collector_fragment_picture_list
 
-    private val mDataList = ArrayList<MediaBean>()
+    private val mDataList = ArrayList<MediaSection>()
     private var mAdapter: MediaListsAdapter? = null
 
     private val mMarkedList= ArrayList<MediaBean>()
@@ -39,11 +40,11 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
     override fun initView() {
         super.initView()
         mAdapter = MediaListsAdapter(mDataList)
-        val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        val layoutManager = StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
         layoutManager.gapStrategy= StaggeredGridLayoutManager.GAP_HANDLING_NONE
         recyclerview.itemAnimator=null
         recyclerview.setLayoutManager(layoutManager)
-        recyclerview.addItemDecoration(DividerGridItemDecoration(2, context!!.dp2px( 6), false))
+//        recyclerview.addItemDecoration(DividerGridItemDecoration(4, context!!.dp2px( 6), false))
         recyclerview.setAdapter(mAdapter)
 
         swipeLayout.setColorSchemeResources(R.color.colorPrimary)
@@ -59,7 +60,18 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
         })
 
         mAdapter?.setOnItemClickListener { adapter, view, position ->
-            PictureViewActivity.start(context!!,mDataList,position)
+            val list=ArrayList<MediaBean>()
+            var realIndex=position
+            for ((index,item) in mDataList.withIndex()){
+                if (item.isHeader){
+                    if (index<=position){
+                        realIndex--
+                    }
+                }else{
+                    list.add(item.t)
+                }
+            }
+            PictureViewActivity.start(context!!,list,realIndex)
         }
     }
 
@@ -72,7 +84,7 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
         return MediaMainListPresenter(context!!)
     }
 
-    override fun receiveData(data: List<MediaBean>) {
+    override fun receiveData(data: List<MediaSection>) {
         swipeLayout.isRefreshing=false
         mDataList.clear()
         mDataList.addAll(data)

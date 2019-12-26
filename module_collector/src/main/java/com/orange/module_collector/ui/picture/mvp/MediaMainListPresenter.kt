@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.orange.module_base.base.BasePresenter
 import com.orange.module_collector.beans.MediaBean
+import com.orange.module_collector.beans.MediaSection
 import com.orange.module_collector.file.FileSavePlaces
 import com.orange.module_collector.ui.picture.adapter.MediaListsAdapter.Companion.TYPE_DATE_TITLE
 import com.orange.module_collector.utils.CalendarUtils
@@ -23,14 +24,14 @@ class MediaMainListPresenter(val context: Context) : BasePresenter<MediaMainList
     }
 
     fun getAllDataUnderFolder(){
-        Single.create(object:SingleOnSubscribe<List<MediaBean>>{
-            override fun subscribe(p0: SingleEmitter<List<MediaBean>>) {
+        Single.create(object:SingleOnSubscribe<List<MediaSection>>{
+            override fun subscribe(p0: SingleEmitter<List<MediaSection>>) {
                 p0.onSuccess(addDateTitleToDataList(FileSavePlaces.getAllMediaData(context)))
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : SingleObserver<List<MediaBean>> {
-                    override fun onSuccess(t: List<MediaBean>) {
+                .subscribe(object : SingleObserver<List<MediaSection>> {
+                    override fun onSuccess(t: List<MediaSection>) {
                         Log.d("czh","total size:${t.size}")
                         getView()?.receiveData(t)
                     }
@@ -47,17 +48,14 @@ class MediaMainListPresenter(val context: Context) : BasePresenter<MediaMainList
     }
 
 
-    fun addDateTitleToDataList(list: List<MediaBean>): List<MediaBean>{
-        val tempList= mutableListOf<MediaBean>()
+    fun addDateTitleToDataList(list: List<MediaBean>): List<MediaSection>{
+        val tempList= mutableListOf<MediaSection>()
         for((index,item) in list.withIndex()){
             if (index==0 || !CalendarUtils.isOneDay(item.createTime,list.get(index-1).createTime)){
-                val mediaBean=MediaBean(createTime = item.createTime)
-                mediaBean.setBeanType(TYPE_DATE_TITLE)
-//                tempList.add(mediaBean)
-                tempList.add(item)
-            }else{
-                tempList.add(item)
+                val head=MediaSection(true,CalendarUtils.getDateAndDayOfWeek(item.createTime))
+                tempList.add(head)
             }
+            tempList.add(MediaSection(item))
         }
         return tempList
     }

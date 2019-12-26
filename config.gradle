@@ -35,7 +35,7 @@ ext {
         retrofitVersion             :"2.5.0",
         glideTransformationsVersion :"4.0.1",
         eventbusVersion             :"3.1.1",
-        adapterVersion              :"2.9.44",
+        adapterVersion              :"2.9.50",
         taskSchedulerVersion        :"2.4.0",
 
 
