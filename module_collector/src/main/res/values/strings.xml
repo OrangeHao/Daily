@@ -3,4 +3,10 @@
     <string name="module_collector_app_name">Secret</string>
     <string name="module_collector_copy_tips">是否收藏到“%1$s”？</string>
 
+
+    <string name="module_collector_share">分享</string>
+    <string name="module_collector_delete">删除</string>
+    <string name="module_collector_navigation_drawer_open">打开侧边栏</string>
+    <string name="module_collector_navigation_drawer_close">关闭侧边栏</string>
+
 </resources>

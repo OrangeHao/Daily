@@ -15,6 +15,8 @@ class MediaSection: SectionMultiEntity<MediaBean>{
 
     }
 
+    var isMarked=false
+
     override fun getItemType(): Int {
         if (t!=null){
             return t.itemType

@@ -13,4 +13,13 @@
         app:layout_constraintDimensionRatio="H,1:1"
         />
 
+    <com.orange.module_collector.widget.CheckView
+        android:id="@+id/check_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"
+        />
+
 </android.support.constraint.ConstraintLayout>
