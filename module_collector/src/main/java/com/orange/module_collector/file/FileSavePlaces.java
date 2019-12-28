@@ -126,9 +126,9 @@ public class FileSavePlaces {
                 return (int)(o2.getCreateTime()-o1.getCreateTime());
             }
         });
-        for (MediaBean bean : result) {
-            Log.d("czh", "get sorted pic:" + bean.getName());
-        }
+//        for (MediaBean bean : result) {
+//            Log.d("czh", "get sorted pic:" + bean.getName());
+//        }
         return result;
     }
 

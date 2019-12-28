@@ -1,6 +1,8 @@
 package com.orange.module_collector.ui.main
 
+import android.content.Intent
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
@@ -90,7 +92,7 @@ class ModuleCollectorMainActivity : BaseActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.action_share->{
-
+                (mFragments.get(viewPager.currentItem) as MenuActionListener).actionById(R.id.action_share)
             }
             R.id.action_delete->{
 
@@ -106,4 +108,8 @@ class ModuleCollectorMainActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+    interface MenuActionListener{
+        fun actionById(actionId:Int)
+    }
 }
