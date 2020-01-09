@@ -1,25 +1,22 @@
 package com.orange.module_collector.ui.picture
 
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.support.v4.view.GravityCompat
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.lxj.xpopup.XPopup
 import com.orange.module_base.base.BaseMvpLazyFragment
-import com.orange.module_base.utils.dp2px
-
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.MediaBean
 import com.orange.module_collector.beans.MediaSection
 import com.orange.module_collector.ui.main.ModuleCollectorMainActivity
 import com.orange.module_collector.ui.picture.adapter.MediaListsAdapter
-import com.orange.module_collector.utils.DividerGridItemDecoration
 import com.orange.module_pictures.ui.jiandan.mvp.MediaMainListPresenter
 import com.orange.module_pictures.ui.jiandan.mvp.MediaMainListView
 import kotlinx.android.synthetic.main.module_collector_fragment_picture_list.*
+
 
 /**
  */
@@ -47,6 +44,8 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
         recyclerview.itemAnimator=null
         recyclerview.setLayoutManager(layoutManager)
 //        recyclerview.addItemDecoration(DividerGridItemDecoration(4, context!!.dp2px( 6), false))
+        val defaultItemAnimator = DefaultItemAnimator()
+        recyclerview.setItemAnimator(defaultItemAnimator)
         recyclerview.setAdapter(mAdapter)
 
         swipeLayout.setColorSchemeResources(R.color.colorPrimary)
@@ -117,9 +116,30 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
                 }
             }
             R.id.action_delete->{
-
+                if (mAdapter!!.mMarkMode){
+                   startDeleteFiles(mAdapter!!.mMarkCollection)
+                }
             }
         }
+    }
+
+
+    private fun startDeleteFiles(data: List<MediaSection>) {
+        val dialog = DeleteFileDialog(context!!).apply {
+            setDeleteFiles(data as ArrayList<MediaSection>)
+            setDeleteListener(object :DeleteFileDialog.DeleteFileListener{
+                override fun complete() {
+                    if (mAdapter!=null){
+                        swipeLayout.isRefreshing
+                        mPresenter?.getAllDataUnderFolder()
+                    }
+                }
+            })
+        }
+        XPopup.Builder(context)
+                .dismissOnTouchOutside(false)
+                .asCustom(dialog)
+                .show()
     }
 
 }

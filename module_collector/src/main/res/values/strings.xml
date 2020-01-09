@@ -9,4 +9,7 @@
     <string name="module_collector_navigation_drawer_open">打开侧边栏</string>
     <string name="module_collector_navigation_drawer_close">关闭侧边栏</string>
 
+
+    <string name="module_collector_delete_tips">是否删除以下%1$d个文件？</string>
+
 </resources>

@@ -95,7 +95,7 @@ class ModuleCollectorMainActivity : BaseActivity() {
                 (mFragments.get(viewPager.currentItem) as MenuActionListener).actionById(R.id.action_share)
             }
             R.id.action_delete->{
-
+                (mFragments.get(viewPager.currentItem) as MenuActionListener).actionById(R.id.action_delete)
             }
             android.R.id.home->{
                 if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
