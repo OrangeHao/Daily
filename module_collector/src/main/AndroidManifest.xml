@@ -23,8 +23,6 @@ package="com.orange.module_collector">
             <data android:mimeType="image/*" />
         </intent-filter>
     </activity>
-    <activity android:name=".ui.main.ModuleCollectorMainActivity">
-    </activity>
 
 </application>
 

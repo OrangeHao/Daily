@@ -56,6 +56,7 @@ class MediaMainListFragment : BaseMvpLazyFragment<MediaMainListPresenter>(), Med
         mAdapter?.setOnItemLongClickListener (object :BaseQuickAdapter.OnItemLongClickListener{
             override fun onItemLongClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int): Boolean {
                 mAdapter?.changeViewMode()
+                mAdapter?.markItem(view!!,position)
                 return true
             }
         })

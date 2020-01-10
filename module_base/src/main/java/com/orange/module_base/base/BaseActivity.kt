@@ -3,8 +3,10 @@ package com.orange.module_base.base
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.ViewGroup
 import com.orange.module_base.R
@@ -83,18 +85,34 @@ abstract class BaseActivity : AppCompatActivity(){
     }
 
     private fun initBackBtn(){
-        toolbar_layout.setNavigationIcon(R.drawable.ic_back)
-        toolbar_layout.setNavigationOnClickListener({ finish()})
+//        toolbar_layout.setNavigationIcon(R.drawable.ic_back)
+//        toolbar_layout.setNavigationOnClickListener({ finish()})
+        val view:Toolbar? = findViewById(R.id.toolbar_layout)
+        if (view==null){
+            return
+        }
+        this.setSupportActionBar(view)
+        view.setNavigationOnClickListener({ finish()})
     }
 
+
+
     fun initNormalTitleBar(stringId:Int){
-        appbar_title.setText(stringId)
         initBackBtn()
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setTitle(stringId)
+        }
     }
 
     fun initNormalTitleBar(title:String){
-        appbar_title.text = title
         initBackBtn()
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setTitle(title)
+        }
     }
 
     fun setRightText(stringId:Int){
