@@ -26,14 +26,10 @@ class MediaSection : SectionMultiEntity<MediaBean> {
 
 
     override fun equals(other: Any?): Boolean {
-        if (other == null
+        return !(other == null
                 || other !is MediaSection
                 || (this.t != null && other.t == null)
                 || (this.t == null && other.t != null)
-                || (this.t != null && other.t != null && !this.t.path.equals(other.t.path))) {
-            return false
-        } else {
-            return true
-        }
+                || (this.t != null && other.t != null && !this.t.path.equals(other.t.path)))
     }
 }

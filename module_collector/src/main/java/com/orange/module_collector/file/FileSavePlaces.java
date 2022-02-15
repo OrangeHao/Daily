@@ -25,21 +25,7 @@ public class FileSavePlaces {
 
 
     private static String getExternalPath(Context context) {
-        String[] paths = new String[0];
-        StorageManager sm = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
-        try {
-            paths = (String[]) sm.getClass().getMethod("getVolumePaths", null).invoke(sm, null);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-        String innerPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-        Log.d("czh", "innerPath:" + innerPath);
-        for (int i = 0; i < paths.length; i++) {
-            if (!innerPath.equals(paths[i])) {
-//                return paths[i];
-            }
-        }
-        return innerPath;
+        return Environment.getExternalStorageDirectory().getAbsolutePath();
     }
 
 

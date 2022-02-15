@@ -161,7 +161,7 @@ class FileHelper{
                 val buffer = ByteArray(1024)
                 var byteRead=0
                 var totalByteRead=0
-                while ({byteRead=fileInputStream.read(buffer);byteRead}()>0) {
+                while ({byteRead=fileInputStream!!.read(buffer);byteRead}()>0) {
                     fileOutputStream.write(buffer, 0, byteRead)
                     totalByteRead+=byteRead
                 }
@@ -170,7 +170,7 @@ class FileHelper{
                 Log.d("czh",e.toString())
                 return false
             }finally {
-                fileInputStream.close()
+                fileInputStream?.close()
                 fileOutputStream.flush()
                 fileOutputStream.close()
                 return true

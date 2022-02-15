@@ -17,29 +17,34 @@ data class MediaBean(var name: String = "", var path: String = "", var createTim
         return mBeanType
     }
 
-    fun setBeanType(type: Int) {
-        mBeanType = type
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readLong()
+    ) {
+        mBeanType = parcel.readInt()
     }
 
-    constructor(source: Parcel) : this(
-            source.readString(),
-            source.readString(),
-            source.readLong()
-    )
-
-    override fun describeContents() = 0
-
-    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
-        writeString(name)
-        writeString(path)
-        writeLong(createTime)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(path)
+        parcel.writeLong(createTime)
+        parcel.writeInt(mBeanType)
     }
 
-    companion object {
-        @JvmField
-        val CREATOR: Parcelable.Creator<MediaBean> = object : Parcelable.Creator<MediaBean> {
-            override fun createFromParcel(source: Parcel): MediaBean = MediaBean(source)
-            override fun newArray(size: Int): Array<MediaBean?> = arrayOfNulls(size)
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<MediaBean> {
+        override fun createFromParcel(parcel: Parcel): MediaBean {
+            return MediaBean(parcel)
+        }
+
+        override fun newArray(size: Int): Array<MediaBean?> {
+            return arrayOfNulls(size)
         }
     }
+
+
 }
