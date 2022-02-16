@@ -22,6 +22,8 @@ public class FileSavePlaces {
 
 
     private static final String Root_Name = "Collections";
+    //Collections/Videos
+    private static final String VIDEO_FOLDER_NAME = "Videos";
 
 
     private static String getExternalPath(Context context) {

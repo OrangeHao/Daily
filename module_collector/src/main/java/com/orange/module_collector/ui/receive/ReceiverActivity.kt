@@ -77,18 +77,18 @@ class ReceiverActivity : BaseActivity(), CopyFileDialog.CopyFileListener {
         val type = intent.type
 
         if (Intent.ACTION_SEND == action && type != null) {
-            if (type.startsWith("image/")) {
-                val imageUri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
-                if (imageUri != null) {
-                    mReceiveData.add(imageUri)
+            if (type.startsWith("image/") || type.startsWith("video/")) {
+                val uri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
+                if (uri != null) {
+                    mReceiveData.add(uri)
                 }
             }
         } else if (Intent.ACTION_SEND_MULTIPLE == action && type != null) {
-            if (type.startsWith("image/")) {
-                val imageUris = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
+            if (type.startsWith("image/") || type.startsWith("video/")) {
+                val uris = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
                 val stringBuilder = StringBuilder()
-                if (imageUris != null) {
-                    for (item in imageUris) {
+                if (uris != null) {
+                    for (item in uris) {
                         mReceiveData.add(item)
                         stringBuilder.append(item.path).append("\n")
                     }

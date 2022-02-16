@@ -91,7 +91,6 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
                     Log.d("czh","uri:${item.toString()}")
                     FileHelper.copyFileFromUri(context,item,getTargetPath(item))
                     if (mIsDelete){
-//                        val delete=context.contentResolver.delete(item,null,null)
                         deleteFileByUri(context,item)
                     }
                     count++
