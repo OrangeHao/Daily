@@ -14,9 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/module_base_AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.picture.PictureViewActivity">
-
-        </activity>
+        <activity android:name=".ui.picture.VideoPlayActivity"></activity>
+        <activity android:name=".ui.picture.PictureViewActivity"></activity>
         <activity
             android:name=".ui.main.SpkashActivity"
             android:theme="@style/module_collector_SplashTheme">
@@ -44,9 +43,7 @@
         </activity>
         <activity
             android:name=".ui.main.ModuleCollectorMainActivity"
-            android:theme="@style/module_base_MainActivityColorTranslucentTheme">
-
-        </activity>
+            android:theme="@style/module_base_MainActivityColorTranslucentTheme"></activity>
     </application>
 
 </manifest>

@@ -10,8 +10,12 @@ import android.widget.*
 import com.lxj.xpopup.core.CenterPopupView
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.FolderBean
+import com.orange.module_collector.beans.ReceiverBean
 import com.orange.module_collector.common.PNG_POSTFIX
+import com.orange.module_collector.common.VIDEO_POSTFIX
 import com.orange.module_collector.file.FileHelper
+import com.orange.module_collector.file.FileSavePlaces
+import com.orange.module_collector.ui.picture.adapter.MediaListsAdapter
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe
@@ -32,8 +36,8 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
     }
 
 
-    private var mReceiveData=ArrayList<Uri>()
-    fun setCopyData(data:ArrayList<Uri>){
+    private var mReceiveData=ArrayList<ReceiverBean>()
+    fun setCopyData(data:ArrayList<ReceiverBean>){
         mReceiveData.addAll(data)
     }
 
@@ -89,9 +93,9 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
                 var count=0
                 for (item in mReceiveData){
                     Log.d("czh","uri:${item.toString()}")
-                    FileHelper.copyFileFromUri(context,item,getTargetPath(item))
+                    FileHelper.copyFileFromUri(context,item.uri,getTargetPath(item))
                     if (mIsDelete){
-                        deleteFileByUri(context,item)
+                        deleteFileByUri(context,item.uri)
                     }
                     count++
                     emitter.onNext(count)
@@ -121,10 +125,18 @@ class CopyFileDialog(context: Context):CenterPopupView(context) {
                 })
     }
 
-    private fun getTargetPath(uri: Uri):String{
-        val name=System.currentTimeMillis().toString()+ PNG_POSTFIX
-        val file=File(mTargetFolderBean?.path,name)
-        val path=file.absolutePath
+    private fun getTargetPath(receiverBean: ReceiverBean):String{
+        var path=""
+        if (receiverBean.type==MediaListsAdapter.TYPE_PIC){
+            val name=System.currentTimeMillis().toString()+ PNG_POSTFIX
+            val file=File(mTargetFolderBean?.path,name)
+            path=file.absolutePath
+        }else if (receiverBean.type==MediaListsAdapter.TYPE_VIDEO){
+            val name=System.currentTimeMillis().toString()+ VIDEO_POSTFIX
+            val file=File(FileSavePlaces.getVideoRootPath(context),name)
+            path=file.absolutePath
+        }
+
         Log.d("czh","copy to path:"+path)
         return path
     }

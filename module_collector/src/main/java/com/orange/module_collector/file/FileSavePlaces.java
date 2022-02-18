@@ -32,6 +32,21 @@ public class FileSavePlaces {
 
 
     /**
+     * 获取存放视频文件的根目录
+     * @param context
+     * @return
+     */
+    public static String getVideoRootPath(Context context){
+        File file = new File(getRootPath(context), VIDEO_FOLDER_NAME);
+        if (!file.exists()) {
+            boolean result = file.mkdirs();
+            Log.d("czh", "create folder:" + file.getAbsolutePath() + " " + result);
+        }
+        return file.getAbsolutePath();
+    }
+
+
+    /**
      * mkdir of path
      *
      * @param path file path
@@ -55,7 +70,7 @@ public class FileSavePlaces {
     public static String getRootPath(Context context) {
         File file = new File(getExternalPath(context), Root_Name);
         if (!file.exists()) {
-            boolean result = file.mkdir();
+            boolean result = file.mkdirs();
             Log.d("czh", "create folder:" + file.getAbsolutePath() + " " + result);
         }
         return file.getAbsolutePath();

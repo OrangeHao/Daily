@@ -2,7 +2,6 @@ package com.orange.module_collector.ui.receive
 
 import android.content.Intent
 import android.net.Uri
-import android.support.v7.app.ActionBar
 import android.support.v7.widget.StaggeredGridLayoutManager
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.interfaces.OnCancelListener
@@ -12,9 +11,11 @@ import com.orange.module_base.utils.checkPermissionWriteExteralStorage
 import com.orange.module_base.utils.dp2px
 import com.orange.module_collector.R
 import com.orange.module_collector.beans.FolderBean
+import com.orange.module_collector.beans.ReceiverBean
 import com.orange.module_collector.file.FileSavePlaces
 import com.orange.module_collector.ui.adapter.FolderListAdapter
 import com.orange.module_collector.ui.main.ModuleCollectorMainActivity
+import com.orange.module_collector.ui.picture.adapter.MediaListsAdapter
 import com.orange.module_collector.utils.DividerGridItemDecoration
 import kotlinx.android.synthetic.main.module_collector_activity_receiver.*
 
@@ -26,7 +27,8 @@ class ReceiverActivity : BaseActivity(), CopyFileDialog.CopyFileListener {
     val mFolderList = ArrayList<FolderBean>()
     var mAdapter: FolderListAdapter? = null
 
-    var mReceiveData = ArrayList<Uri>()
+    var mReceiveData = ArrayList<ReceiverBean>()
+
 
 
     override fun initView() {
@@ -77,21 +79,25 @@ class ReceiverActivity : BaseActivity(), CopyFileDialog.CopyFileListener {
         val type = intent.type
 
         if (Intent.ACTION_SEND == action && type != null) {
-            if (type.startsWith("image/") || type.startsWith("video/")) {
-                val uri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
-                if (uri != null) {
-                    mReceiveData.add(uri)
+            val uri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
+            if (uri != null) {
+                if (type.startsWith("image/")) {
+                    mReceiveData.add(ReceiverBean(uri,MediaListsAdapter.TYPE_PIC))
+                }else if (type.startsWith("video/")){
+                    mReceiveData.add(ReceiverBean(uri,MediaListsAdapter.TYPE_VIDEO))
                 }
             }
         } else if (Intent.ACTION_SEND_MULTIPLE == action && type != null) {
-            if (type.startsWith("image/") || type.startsWith("video/")) {
-                val uris = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
-                val stringBuilder = StringBuilder()
-                if (uris != null) {
-                    for (item in uris) {
-                        mReceiveData.add(item)
-                        stringBuilder.append(item.path).append("\n")
+            val uris = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
+            val stringBuilder = StringBuilder()
+            if (uris != null) {
+                for (item in uris) {
+                    if (type.startsWith("image/")) {
+                        mReceiveData.add(ReceiverBean(item,MediaListsAdapter.TYPE_PIC))
+                    }else if (type.startsWith("video/")){
+                        mReceiveData.add(ReceiverBean(item,MediaListsAdapter.TYPE_VIDEO))
                     }
+                    stringBuilder.append(item.path).append("\n")
                 }
             }
         }
